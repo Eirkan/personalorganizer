@@ -1,0 +1,10 @@
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\DenemeWinForm\PO.Types\obj\Debug\ResolveAssemblyReference.cache
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\DenemeWinForm\PO.Types\bin\Debug\PO.Types.dll
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\DenemeWinForm\PO.Types\bin\Debug\PO.Types.pdb
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\DenemeWinForm\PO.Types\obj\Debug\PO.Types.dll
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\DenemeWinForm\PO.Types\obj\Debug\PO.Types.pdb
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.Types\bin\Debug\PO.Types.dll
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.Types\bin\Debug\PO.Types.pdb
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.Types\obj\Debug\ResolveAssemblyReference.cache
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.Types\obj\Debug\PO.Types.dll
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.Types\obj\Debug\PO.Types.pdb

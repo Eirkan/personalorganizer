@@ -47,22 +47,23 @@
             this.btnAddAddress = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.gvMail = new System.Windows.Forms.DataGridView();
-            this.gvWebPage = new System.Windows.Forms.DataGridView();
-            this.gvAddress = new System.Windows.Forms.DataGridView();
-            this.gvPhone = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
             this.MailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.gvWebPage = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumnDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.gvAddress = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumnDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.gvPhone = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnSave = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumnDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewButtonColumnDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblHeader = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvMail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvWebPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAddress)).BeginInit();
@@ -73,7 +74,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblName.Location = new System.Drawing.Point(7, 15);
+            this.lblName.Location = new System.Drawing.Point(7, 37);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(46, 15);
             this.lblName.TabIndex = 0;
@@ -81,7 +82,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(103, 12);
+            this.txtName.Location = new System.Drawing.Point(103, 34);
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(249, 23);
@@ -89,7 +90,7 @@
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(103, 41);
+            this.txtSurname.Location = new System.Drawing.Point(103, 63);
             this.txtSurname.MaxLength = 100;
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(249, 23);
@@ -99,7 +100,7 @@
             // 
             this.lblSurname.AutoSize = true;
             this.lblSurname.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblSurname.Location = new System.Drawing.Point(7, 44);
+            this.lblSurname.Location = new System.Drawing.Point(7, 66);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(63, 15);
             this.lblSurname.TabIndex = 2;
@@ -107,7 +108,7 @@
             // 
             // txtCompany
             // 
-            this.txtCompany.Location = new System.Drawing.Point(103, 70);
+            this.txtCompany.Location = new System.Drawing.Point(103, 92);
             this.txtCompany.MaxLength = 100;
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(249, 23);
@@ -117,7 +118,7 @@
             // 
             this.lblCompany.AutoSize = true;
             this.lblCompany.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCompany.Location = new System.Drawing.Point(7, 73);
+            this.lblCompany.Location = new System.Drawing.Point(7, 95);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(64, 15);
             this.lblCompany.TabIndex = 4;
@@ -127,7 +128,7 @@
             // 
             this.lblMail.AutoSize = true;
             this.lblMail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblMail.Location = new System.Drawing.Point(7, 102);
+            this.lblMail.Location = new System.Drawing.Point(7, 124);
             this.lblMail.Name = "lblMail";
             this.lblMail.Size = new System.Drawing.Size(87, 15);
             this.lblMail.TabIndex = 6;
@@ -135,7 +136,7 @@
             // 
             // btnAddMail
             // 
-            this.btnAddMail.Location = new System.Drawing.Point(358, 99);
+            this.btnAddMail.Location = new System.Drawing.Point(358, 121);
             this.btnAddMail.Name = "btnAddMail";
             this.btnAddMail.Size = new System.Drawing.Size(55, 23);
             this.btnAddMail.TabIndex = 7;
@@ -145,7 +146,7 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(103, 99);
+            this.txtMail.Location = new System.Drawing.Point(103, 121);
             this.txtMail.MaxLength = 100;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(249, 23);
@@ -153,7 +154,7 @@
             // 
             // txtWebPage
             // 
-            this.txtWebPage.Location = new System.Drawing.Point(103, 222);
+            this.txtWebPage.Location = new System.Drawing.Point(103, 244);
             this.txtWebPage.MaxLength = 100;
             this.txtWebPage.Name = "txtWebPage";
             this.txtWebPage.Size = new System.Drawing.Size(251, 23);
@@ -161,7 +162,7 @@
             // 
             // btnAddPage
             // 
-            this.btnAddPage.Location = new System.Drawing.Point(360, 222);
+            this.btnAddPage.Location = new System.Drawing.Point(360, 244);
             this.btnAddPage.Name = "btnAddPage";
             this.btnAddPage.Size = new System.Drawing.Size(55, 23);
             this.btnAddPage.TabIndex = 10;
@@ -173,7 +174,7 @@
             // 
             this.lblWebPage.AutoSize = true;
             this.lblWebPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblWebPage.Location = new System.Drawing.Point(7, 225);
+            this.lblWebPage.Location = new System.Drawing.Point(7, 247);
             this.lblWebPage.Name = "lblWebPage";
             this.lblWebPage.Size = new System.Drawing.Size(69, 15);
             this.lblWebPage.TabIndex = 9;
@@ -181,7 +182,7 @@
             // 
             // txtPhoneNumber
             // 
-            this.txtPhoneNumber.Location = new System.Drawing.Point(103, 346);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(103, 368);
             this.txtPhoneNumber.MaxLength = 100;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(249, 23);
@@ -189,7 +190,7 @@
             // 
             // btnAddPhone
             // 
-            this.btnAddPhone.Location = new System.Drawing.Point(358, 346);
+            this.btnAddPhone.Location = new System.Drawing.Point(358, 368);
             this.btnAddPhone.Name = "btnAddPhone";
             this.btnAddPhone.Size = new System.Drawing.Size(55, 23);
             this.btnAddPhone.TabIndex = 13;
@@ -201,7 +202,7 @@
             // 
             this.lblPhoneNumber.AutoSize = true;
             this.lblPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblPhoneNumber.Location = new System.Drawing.Point(7, 349);
+            this.lblPhoneNumber.Location = new System.Drawing.Point(7, 371);
             this.lblPhoneNumber.Name = "lblPhoneNumber";
             this.lblPhoneNumber.Size = new System.Drawing.Size(97, 15);
             this.lblPhoneNumber.TabIndex = 12;
@@ -209,7 +210,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(103, 472);
+            this.txtAddress.Location = new System.Drawing.Point(103, 494);
             this.txtAddress.MaxLength = 100;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(251, 23);
@@ -217,7 +218,7 @@
             // 
             // btnAddAddress
             // 
-            this.btnAddAddress.Location = new System.Drawing.Point(360, 472);
+            this.btnAddAddress.Location = new System.Drawing.Point(360, 494);
             this.btnAddAddress.Name = "btnAddAddress";
             this.btnAddAddress.Size = new System.Drawing.Size(55, 23);
             this.btnAddAddress.TabIndex = 16;
@@ -229,7 +230,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(7, 475);
+            this.label3.Location = new System.Drawing.Point(7, 497);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 15);
             this.label3.TabIndex = 15;
@@ -238,75 +239,18 @@
             // gvMail
             // 
             this.gvMail.AllowUserToAddRows = false;
+            this.gvMail.BackgroundColor = System.Drawing.Color.White;
             this.gvMail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvMail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MailAddress,
             this.Delete});
-            this.gvMail.Location = new System.Drawing.Point(103, 130);
+            this.gvMail.Location = new System.Drawing.Point(103, 152);
             this.gvMail.Name = "gvMail";
             this.gvMail.ReadOnly = true;
             this.gvMail.RowHeadersVisible = false;
             this.gvMail.Size = new System.Drawing.Size(310, 77);
             this.gvMail.TabIndex = 18;
             this.gvMail.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMail_CellMouseClick);
-            // 
-            // gvWebPage
-            // 
-            this.gvWebPage.AllowUserToAddRows = false;
-            this.gvWebPage.AllowUserToDeleteRows = false;
-            this.gvWebPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvWebPage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewButtonColumnDelete});
-            this.gvWebPage.Location = new System.Drawing.Point(103, 251);
-            this.gvWebPage.Name = "gvWebPage";
-            this.gvWebPage.ReadOnly = true;
-            this.gvWebPage.RowHeadersVisible = false;
-            this.gvWebPage.Size = new System.Drawing.Size(310, 77);
-            this.gvWebPage.TabIndex = 19;
-            this.gvWebPage.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvWebPage_CellMouseClick);
-            // 
-            // gvAddress
-            // 
-            this.gvAddress.AllowUserToAddRows = false;
-            this.gvAddress.AllowUserToDeleteRows = false;
-            this.gvAddress.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvAddress.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewImageColumnDelete});
-            this.gvAddress.Location = new System.Drawing.Point(103, 501);
-            this.gvAddress.Name = "gvAddress";
-            this.gvAddress.ReadOnly = true;
-            this.gvAddress.RowHeadersVisible = false;
-            this.gvAddress.Size = new System.Drawing.Size(314, 77);
-            this.gvAddress.TabIndex = 20;
-            this.gvAddress.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvAddress_CellMouseClick);
-            // 
-            // gvPhone
-            // 
-            this.gvPhone.AllowUserToAddRows = false;
-            this.gvPhone.AllowUserToDeleteRows = false;
-            this.gvPhone.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvPhone.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewButtonColumn3});
-            this.gvPhone.Location = new System.Drawing.Point(103, 375);
-            this.gvPhone.Name = "gvPhone";
-            this.gvPhone.ReadOnly = true;
-            this.gvPhone.RowHeadersVisible = false;
-            this.gvPhone.Size = new System.Drawing.Size(312, 77);
-            this.gvPhone.TabIndex = 21;
-            this.gvPhone.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvPhone_CellMouseClick);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(342, 586);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 22;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // MailAddress
             // 
@@ -315,12 +259,97 @@
             this.MailAddress.Name = "MailAddress";
             this.MailAddress.ReadOnly = true;
             // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Image = global::PersonelOrganizer.Properties.Resources.close_small;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.Width = 50;
+            // 
+            // gvWebPage
+            // 
+            this.gvWebPage.AllowUserToAddRows = false;
+            this.gvWebPage.AllowUserToDeleteRows = false;
+            this.gvWebPage.BackgroundColor = System.Drawing.Color.White;
+            this.gvWebPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvWebPage.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewButtonColumnDelete});
+            this.gvWebPage.Location = new System.Drawing.Point(103, 273);
+            this.gvWebPage.Name = "gvWebPage";
+            this.gvWebPage.ReadOnly = true;
+            this.gvWebPage.RowHeadersVisible = false;
+            this.gvWebPage.Size = new System.Drawing.Size(310, 77);
+            this.gvWebPage.TabIndex = 19;
+            this.gvWebPage.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvWebPage_CellMouseClick);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn1.HeaderText = "Web Page";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewButtonColumnDelete
+            // 
+            this.dataGridViewButtonColumnDelete.HeaderText = "Delete";
+            this.dataGridViewButtonColumnDelete.Image = global::PersonelOrganizer.Properties.Resources.close_small;
+            this.dataGridViewButtonColumnDelete.Name = "dataGridViewButtonColumnDelete";
+            this.dataGridViewButtonColumnDelete.ReadOnly = true;
+            this.dataGridViewButtonColumnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtonColumnDelete.Width = 50;
+            // 
+            // gvAddress
+            // 
+            this.gvAddress.AllowUserToAddRows = false;
+            this.gvAddress.AllowUserToDeleteRows = false;
+            this.gvAddress.BackgroundColor = System.Drawing.Color.White;
+            this.gvAddress.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvAddress.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewImageColumnDelete});
+            this.gvAddress.Location = new System.Drawing.Point(103, 523);
+            this.gvAddress.Name = "gvAddress";
+            this.gvAddress.ReadOnly = true;
+            this.gvAddress.RowHeadersVisible = false;
+            this.gvAddress.Size = new System.Drawing.Size(314, 77);
+            this.gvAddress.TabIndex = 20;
+            this.gvAddress.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvAddress_CellMouseClick);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Postal Address";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewImageColumnDelete
+            // 
+            this.dataGridViewImageColumnDelete.HeaderText = "Delete";
+            this.dataGridViewImageColumnDelete.Image = global::PersonelOrganizer.Properties.Resources.close_small;
+            this.dataGridViewImageColumnDelete.Name = "dataGridViewImageColumnDelete";
+            this.dataGridViewImageColumnDelete.ReadOnly = true;
+            this.dataGridViewImageColumnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumnDelete.Width = 50;
+            // 
+            // gvPhone
+            // 
+            this.gvPhone.AllowUserToAddRows = false;
+            this.gvPhone.AllowUserToDeleteRows = false;
+            this.gvPhone.BackgroundColor = System.Drawing.Color.White;
+            this.gvPhone.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvPhone.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewButtonColumn3});
+            this.gvPhone.Location = new System.Drawing.Point(103, 397);
+            this.gvPhone.Name = "gvPhone";
+            this.gvPhone.ReadOnly = true;
+            this.gvPhone.RowHeadersVisible = false;
+            this.gvPhone.Size = new System.Drawing.Size(312, 77);
+            this.gvPhone.TabIndex = 21;
+            this.gvPhone.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvPhone_CellMouseClick);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -329,12 +358,24 @@
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn2
+            // dataGridViewButtonColumn3
             // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Postal Address";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewButtonColumn3.HeaderText = "Delete";
+            this.dataGridViewButtonColumn3.Image = global::PersonelOrganizer.Properties.Resources.close_small;
+            this.dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
+            this.dataGridViewButtonColumn3.ReadOnly = true;
+            this.dataGridViewButtonColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtonColumn3.Width = 50;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(342, 608);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 22;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dataGridViewImageColumn1
             // 
@@ -372,49 +413,25 @@
             this.dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn4.Width = 50;
             // 
-            // dataGridViewButtonColumn3
+            // lblHeader
             // 
-            this.dataGridViewButtonColumn3.HeaderText = "Delete";
-            this.dataGridViewButtonColumn3.Image = global::PersonelOrganizer.Properties.Resources.close_small;
-            this.dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
-            this.dataGridViewButtonColumn3.ReadOnly = true;
-            this.dataGridViewButtonColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn3.Width = 50;
-            // 
-            // dataGridViewImageColumnDelete
-            // 
-            this.dataGridViewImageColumnDelete.HeaderText = "Delete";
-            this.dataGridViewImageColumnDelete.Image = global::PersonelOrganizer.Properties.Resources.close_small;
-            this.dataGridViewImageColumnDelete.Name = "dataGridViewImageColumnDelete";
-            this.dataGridViewImageColumnDelete.ReadOnly = true;
-            this.dataGridViewImageColumnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumnDelete.Width = 50;
-            // 
-            // dataGridViewButtonColumnDelete
-            // 
-            this.dataGridViewButtonColumnDelete.HeaderText = "Delete";
-            this.dataGridViewButtonColumnDelete.Image = global::PersonelOrganizer.Properties.Resources.close_small;
-            this.dataGridViewButtonColumnDelete.Name = "dataGridViewButtonColumnDelete";
-            this.dataGridViewButtonColumnDelete.ReadOnly = true;
-            this.dataGridViewButtonColumnDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumnDelete.Width = 50;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete";
-            this.Delete.Image = global::PersonelOrganizer.Properties.Resources.close_small;
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.Width = 50;
+            this.lblHeader.AutoSize = true;
+            this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblHeader.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.lblHeader.Location = new System.Drawing.Point(7, 7);
+            this.lblHeader.Name = "lblHeader";
+            this.lblHeader.Size = new System.Drawing.Size(75, 15);
+            this.lblHeader.TabIndex = 23;
+            this.lblHeader.Text = "Add Contact";
             // 
             // AddContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(425, 621);
+            this.ClientSize = new System.Drawing.Size(425, 638);
             this.ControlBox = false;
+            this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.gvPhone);
             this.Controls.Add(this.gvAddress);
@@ -490,5 +507,6 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
+        private System.Windows.Forms.Label lblHeader;
     }
 }

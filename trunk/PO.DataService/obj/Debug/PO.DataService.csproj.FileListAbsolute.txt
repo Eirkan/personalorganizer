@@ -12,3 +12,10 @@ C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO
 C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.DataService\obj\Debug\ResolveAssemblyReference.cache
 C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.DataService\obj\Debug\PO.DataService.dll
 C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PersonelOrganizer\PO.DataService\obj\Debug\PO.DataService.pdb
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PO\PO.DataService\bin\Debug\PO.DataService.dll
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PO\PO.DataService\bin\Debug\PO.DataService.pdb
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PO\PO.DataService\bin\Debug\PO.Types.dll
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PO\PO.DataService\bin\Debug\PO.Types.pdb
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PO\PO.DataService\obj\Debug\ResolveAssemblyReference.cache
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PO\PO.DataService\obj\Debug\PO.DataService.dll
+C:\Docs\Dersler\2009-2010 Guz Ders Programı\SM 503\project\PO\PO.DataService\obj\Debug\PO.DataService.pdb

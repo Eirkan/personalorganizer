@@ -6,6 +6,9 @@ using System.ServiceModel;
 using PO.Types.Attributes;
 using PO.DataService;
 using PO.Types.DataSets;
+using System.Data.SqlClient;
+using IB.EBakanlik.Services.Tools;
+using System.Data;
 
 namespace PO.Services.BusinessObjects
 {
@@ -48,6 +51,18 @@ namespace PO.Services.BusinessObjects
 
                 throw (ex);
             }
+        }
+
+        public CONTACTDataSet SelectContactsWithUserID(Guid pUserID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.CONTACT
+                                WHERE UserID = @UserID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@UserID", SqlDbType.UniqueIdentifier, pUserID));
+            CONTACTDataSet con = new CONTACTDataSet();
+            dto.GetRecords(con.CONTACT, cmd);
+            return con;
         }
     }
 }

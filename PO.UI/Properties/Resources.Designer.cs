@@ -102,6 +102,13 @@ namespace PersonelOrganizer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap go_small {
+            get {
+                object obj = ResourceManager.GetObject("go_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap help {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
@@ -126,6 +133,13 @@ namespace PersonelOrganizer.Properties {
         internal static System.Drawing.Bitmap report {
             get {
                 object obj = ResourceManager.GetObject("report", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap report_small {
+            get {
+                object obj = ResourceManager.GetObject("report_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

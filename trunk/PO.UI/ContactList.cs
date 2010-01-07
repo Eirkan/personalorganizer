@@ -32,6 +32,7 @@ namespace PersonelOrganizer
             {
                 DataGridViewRow row = new DataGridViewRow();
                 DataGridViewImageCell select = new DataGridViewImageCell();
+                select.Description = "Deneme";
                 row.Cells.Add(select);
                 DataGridViewTextBoxCell name = new DataGridViewTextBoxCell();
                 name.Value = (!con.CONTACT[0].IsNameNull()) ? con.CONTACT[0].Name : String.Empty;
@@ -41,11 +42,32 @@ namespace PersonelOrganizer
                 row.Cells.Add(surname);
                 DataGridViewTextBoxCell company = new DataGridViewTextBoxCell();
                 company.Value = (!con.CONTACT[0].IsCompanyNull()) ? con.CONTACT[0].Company : String.Empty;
-                row.Cells.Add(company);
-                DataGridViewImageCell detail = new DataGridViewImageCell();
-                row.Cells.Add(detail);
+                DataGridViewTextBoxCell contactID = new DataGridViewTextBoxCell();
+                contactID.Value = con.CONTACT[0].ContactID;
+                row.Cells.Add(contactID);
                 gvContactList.Rows.Add(row);
             }
+        }
+
+        private void gvContactList_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+                LoadContactDetails(gvContactList.Rows[e.RowIndex].Cells["ContactID"].Value.ToString());
+        }
+
+        private void LoadContactDetails(string contactID)
+        {
+            Guid pContactID = new Guid(contactID);
+            ClearAllDetails();
+
+        }
+
+        private void ClearAllDetails()
+        {
+            gvMail.Rows.Clear();
+            gvPhone.Rows.Clear();
+            gvAddress.Rows.Clear();
+            gvWebPage.Rows.Clear();
         }
     }
 }

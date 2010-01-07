@@ -14,9 +14,17 @@ namespace PersonelOrganizer
 {
     public partial class AddContact : Form
     {
+        CONTACTDataSet contactDS;
+        EMAILDataSet mailDS;
+        WEBPAGEDataSet webpageDS;
+        PHONE_NUMBERDataSet phoneDS;
+        POSTAL_ADDRESSDataSet addressDS;
+
         public AddContact()
         {
             InitializeComponent();
+            if (POGlobals.ContactID != Guid.Empty)
+                LoadUpdateContactInfo();
         }
 
         #region Mail
@@ -45,6 +53,8 @@ namespace PersonelOrganizer
 
         private void gvMail_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
             if (e.ColumnIndex == 1)
                 gvMail.Rows.RemoveAt(e.RowIndex);
         }
@@ -76,6 +86,8 @@ namespace PersonelOrganizer
 
         private void gvWebPage_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
             if (e.ColumnIndex == 1)
                 gvWebPage.Rows.RemoveAt(e.RowIndex);
         }
@@ -107,6 +119,8 @@ namespace PersonelOrganizer
 
         private void gvPhone_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
             if (e.ColumnIndex == 1)
                 gvPhone.Rows.RemoveAt(e.RowIndex);
         }
@@ -138,6 +152,8 @@ namespace PersonelOrganizer
 
         private void gvAddress_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0)
+                return;
             if (e.ColumnIndex == 1)
             {
                 gvAddress.Rows.RemoveAt(e.RowIndex);
@@ -152,7 +168,13 @@ namespace PersonelOrganizer
             if (!CheckContactInfo())
                 return;
 
-            CONTACTDataSet contactDS = new CONTACTDataSet();
+            SaveContact();
+        }
+
+        private void SaveContact()
+        {
+            CheckNewRowOrUpdate();
+
             CONTACTDataSet.CONTACTRow rowContact = contactDS.CONTACT.NewCONTACTRow();
             rowContact.ContactID = Guid.NewGuid();
             rowContact.UserID = POGlobals.UserID;
@@ -161,7 +183,8 @@ namespace PersonelOrganizer
             rowContact.Company = txtCompany.Text;
             contactDS.CONTACT.AddCONTACTRow(rowContact);
 
-            EMAILDataSet mailDS = new EMAILDataSet();
+            if (mailDS == null)
+                mailDS = new EMAILDataSet();
             for (int i = 0; i < gvMail.Rows.Count; i++)
             {
                 EMAILDataSet.EMAILRow rowMail = mailDS.EMAIL.NewEMAILRow();
@@ -171,7 +194,7 @@ namespace PersonelOrganizer
                 mailDS.EMAIL.AddEMAILRow(rowMail);
             }
 
-            WEBPAGEDataSet webpageDS = new WEBPAGEDataSet();
+            webpageDS = new WEBPAGEDataSet();
             for (int i = 0; i < gvWebPage.Rows.Count; i++)
             {
                 WEBPAGEDataSet.WEBPAGERow rowPage = webpageDS.WEBPAGE.NewWEBPAGERow();
@@ -181,7 +204,8 @@ namespace PersonelOrganizer
                 webpageDS.WEBPAGE.AddWEBPAGERow(rowPage);
             }
 
-            PHONE_NUMBERDataSet phoneDS = new PHONE_NUMBERDataSet();
+            if (phoneDS == null)
+                phoneDS = new PHONE_NUMBERDataSet();
             for (int i = 0; i < gvPhone.Rows.Count; i++)
             {
                 PHONE_NUMBERDataSet.PHONE_NUMBERRow rowPhone = phoneDS.PHONE_NUMBER.NewPHONE_NUMBERRow();
@@ -191,7 +215,8 @@ namespace PersonelOrganizer
                 phoneDS.PHONE_NUMBER.AddPHONE_NUMBERRow(rowPhone);
             }
 
-            POSTAL_ADDRESSDataSet addressDS = new POSTAL_ADDRESSDataSet();
+            if (addressDS == null)
+                addressDS = new POSTAL_ADDRESSDataSet();
             for (int i = 0; i < gvAddress.Rows.Count; i++)
             {
                 POSTAL_ADDRESSDataSet.POSTAL_ADDRESSRow rowAddress = addressDS.POSTAL_ADDRESS.NewPOSTAL_ADDRESSRow();
@@ -203,8 +228,7 @@ namespace PersonelOrganizer
 
             try
             {
-                ContactBS contact = new ContactBS();
-                contact.AddContact(contactDS, mailDS, webpageDS, phoneDS, addressDS);
+                new ContactBS().AddContact(contactDS, mailDS, webpageDS, phoneDS, addressDS);
                 MessageBox.Show("Contact is saved successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 MainForm main = (MainForm)this.MdiParent;
                 main.OpenContactList();
@@ -213,6 +237,76 @@ namespace PersonelOrganizer
             {
                 MessageBox.Show("Contact not saved, Error : " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoadUpdateContactInfo()
+        {
+            contactDS = new ContactBS().SelectByContactID(POGlobals.ContactID);
+            mailDS = new EmailBS().SelectByContactID(POGlobals.ContactID);
+            phoneDS = new PhoneNumberBS().SelectByContactID(POGlobals.ContactID);
+            addressDS = new AddressBS().SelectByContactID(POGlobals.ContactID);
+            webpageDS = new WebPageBS().SelectByContactID(POGlobals.ContactID);
+
+            CONTACTDataSet.CONTACTRow rowContact = contactDS.CONTACT[0];
+            txtName.Text = rowContact.Name;
+            txtSurname.Text = rowContact.Surname;
+            txtCompany.Text = rowContact.Company;
+
+            for (int m = 0; m < webpageDS.WEBPAGE.Rows.Count; m++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewTextBoxCell page = new DataGridViewTextBoxCell();
+                page.Value = webpageDS.WEBPAGE[m].WebPageAddress;
+                row.Cells.Add(page);
+                gvWebPage.Rows.Add(row);
+            }
+
+            for (int k = 0; k < addressDS.POSTAL_ADDRESS.Rows.Count; k++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewTextBoxCell address = new DataGridViewTextBoxCell();
+                address.Value = addressDS.POSTAL_ADDRESS[k].PostalAddress;
+                row.Cells.Add(address);
+                gvAddress.Rows.Add(row);
+            }
+
+            for (int j = 0; j < phoneDS.PHONE_NUMBER.Rows.Count; j++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewTextBoxCell phone = new DataGridViewTextBoxCell();
+                phone.Value = phoneDS.PHONE_NUMBER[j].PhoneNumber;
+                row.Cells.Add(phone);
+                gvPhone.Rows.Add(row);
+            }
+
+            for (int i = 0; i < mailDS.EMAIL.Rows.Count; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                DataGridViewTextBoxCell mail = new DataGridViewTextBoxCell();
+                mail.Value = mailDS.EMAIL[i].EmailAddress;
+                row.Cells.Add(mail);
+                gvMail.Rows.Add(row);
+            }
+        }
+
+        private void CheckNewRowOrUpdate()
+        {
+            if (contactDS == null) contactDS = new CONTACTDataSet();
+            else
+                contactDS.CONTACT[0].Delete();
+            if (mailDS == null) mailDS = new EMAILDataSet();
+            else
+                mailDS.EMAIL.Clear();
+
+            if (webpageDS == null) webpageDS = new WEBPAGEDataSet();
+            else
+                webpageDS.WEBPAGE.Clear();
+            if (addressDS == null) addressDS = new POSTAL_ADDRESSDataSet();
+            else
+                addressDS.POSTAL_ADDRESS.Clear();
+            if (phoneDS == null) phoneDS = new PHONE_NUMBERDataSet();
+            else
+                phoneDS.PHONE_NUMBER.Clear();
         }
 
         private bool CheckContactInfo()

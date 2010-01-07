@@ -31,5 +31,26 @@ namespace PO.Services.BusinessObjects
             dto.GetRecords(dt, cmd);
             return dt;
         }
+
+        public PHONE_NUMBERDataSet SelectByContactID(Guid pContactID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.PHONE_NUMBER WHERE ContactID = @ContactID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ContactID", SqlDbType.UniqueIdentifier, pContactID));
+            PHONE_NUMBERDataSet ds = new PHONE_NUMBERDataSet();
+            dto.GetRecords(ds.PHONE_NUMBER, cmd);
+            return ds;
+        }
+
+        public void DeleteByContactID(Guid pContactID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"DELETE FROM PersonelOrganizerDb.dbo.PHONE_NUMBER
+                                WHERE ContactID = @ContactID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ContactID", SqlDbType.UniqueIdentifier, pContactID));
+            dto.ExecuteSqlStatement(cmd);
+        }
     }
 }

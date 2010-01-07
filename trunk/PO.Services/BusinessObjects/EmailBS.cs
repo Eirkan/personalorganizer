@@ -31,5 +31,26 @@ namespace PO.Services.BusinessObjects
             dto.GetRecords(dt, cmd);
             return dt;
         }
+
+        public EMAILDataSet SelectByContactID(Guid pContactID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.EMAIL WHERE ContactID = @ContactID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ContactID", SqlDbType.UniqueIdentifier, pContactID));
+            EMAILDataSet ds = new EMAILDataSet();
+            dto.GetRecords(ds.EMAIL, cmd);
+            return ds;
+        }
+
+        public void DeleteByContactID(Guid pContactID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"DELETE FROM PersonelOrganizerDb.dbo.EMAIL
+                                WHERE ContactID = @ContactID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ContactID", SqlDbType.UniqueIdentifier, pContactID));
+            dto.ExecuteSqlStatement(cmd);
+        }
     }
 }

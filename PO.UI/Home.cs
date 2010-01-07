@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PersonelOrganizer.Util;
 
 namespace PersonelOrganizer
 {
@@ -18,7 +19,7 @@ namespace PersonelOrganizer
 
         private void Home_Load(object sender, EventArgs e)
         {
-           
+            lblUsername.Text = "Welcome " + POGlobals.UserNameSurname;
         }
     }
 }

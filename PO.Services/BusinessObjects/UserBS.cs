@@ -32,24 +32,28 @@ namespace PO.Services.BusinessObjects
             return dt;
         }
 
-        public Guid IsUserValid(string pUserName, string pPassword)
+        public void IsUserValid(out Guid pUserID, string pUserName, string pPassword, out string pName, out string pSurame)
         {
-            Guid pUserId = Guid.Empty;
+            pUserID = Guid.Empty;
+            pName = String.Empty;
+            pSurame = String.Empty;
             IPODataObject dto = GetPODataObject();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.PO_USER
                                 WHERE Password = @Password AND UserName = @UserName";
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@UserName", SqlDbType.VarChar, pUserName));
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@Password", SqlDbType.VarChar, pPassword));
-            DataTable dt = new DataTable();
-            dto.GetRecords(dt, cmd);
-            if (dt.Rows.Count > 0)
+            PO_USERDataSet ds = new PO_USERDataSet();
+            dto.GetRecords(ds.PO_USER, cmd);
+            if (ds.PO_USER.Rows.Count > 0)
             {
-                if (dt.Rows[0]["UserID"] != DBNull.Value)
-                    pUserId = new Guid(dt.Rows[0]["UserID"].ToString());
+                PO_USERDataSet.PO_USERRow row = ds.PO_USER[0];
+                pUserID = row.UserID;
+                if (!row.IsNameNull())
+                    pName = row.Name;
+                if (!row.IsSurnameNull())
+                    pSurame = row.Surname;
             }
-
-            return pUserId;
         }
 
     }

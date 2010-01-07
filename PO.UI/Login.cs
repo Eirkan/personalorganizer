@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using PO.Services.BusinessObjects;
 using PersonelOrganizer.Util;
+using PO.Types.DataSets;
 
 namespace PersonelOrganizer
 {
@@ -42,14 +43,17 @@ namespace PersonelOrganizer
         {
             string pUserName = txtUserName.Text;
             string pPassword = txtPassword.Text;
+            string pName = String.Empty, pSurname = String.Empty;
+            Guid pUserID = Guid.Empty;
 
             UserBS user = new UserBS();
-            Guid pUserID = user.IsUserValid(pUserName, pPassword); 
+            user.IsUserValid(out pUserID, pUserName, pPassword, out pName, out pSurname);
             if (pUserID == Guid.Empty)
                 MessageBox.Show("Login Failed", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             else
             {
                 POGlobals.UserID = pUserID;
+                POGlobals.UserNameSurname = pName + " " + pSurname; 
                 this.Hide();
                 MainForm main = new MainForm();
                 main.Show();

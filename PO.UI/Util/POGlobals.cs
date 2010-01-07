@@ -9,5 +9,7 @@ namespace PersonelOrganizer.Util
     {
         // Kullanici Login islemi basarili ise, kullanicinin UserID degerini tum uygulama lifecycle da tasir.
         public static Guid UserID;
+        public static string UserNameSurname;
+        public static Guid ContactID;
     }
 }

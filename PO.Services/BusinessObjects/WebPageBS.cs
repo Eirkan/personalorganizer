@@ -31,5 +31,26 @@ namespace PO.Services.BusinessObjects
             dto.GetRecords(dt, cmd);
             return dt;
         }
+
+        public WEBPAGEDataSet SelectByContactID(Guid pContactID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.WEBPAGE WHERE ContactID = @ContactID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ContactID", SqlDbType.UniqueIdentifier, pContactID));
+            WEBPAGEDataSet ds = new WEBPAGEDataSet();
+            dto.GetRecords(ds.WEBPAGE, cmd);
+            return ds;
+        }
+
+        public void DeleteByContactID(Guid pContactID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"DELETE FROM PersonelOrganizerDb.dbo.WEBPAGE
+                                WHERE ContactID = @ContactID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ContactID", SqlDbType.UniqueIdentifier, pContactID));
+            dto.ExecuteSqlStatement(cmd);
+        }
     }
 }

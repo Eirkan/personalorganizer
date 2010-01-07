@@ -65,7 +65,7 @@
             // 
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 645);
+            this.status.Location = new System.Drawing.Point(0, 665);
             this.status.Name = "status";
             this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.status.Size = new System.Drawing.Size(438, 22);
@@ -122,7 +122,7 @@
             // 
             this.addContactToolStripMenuItem.Image = global::PersonelOrganizer.Properties.Resources.user_add;
             this.addContactToolStripMenuItem.Name = "addContactToolStripMenuItem";
-            this.addContactToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addContactToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.addContactToolStripMenuItem.Text = "Add Contact";
             this.addContactToolStripMenuItem.Click += new System.EventHandler(this.addContactToolStripMenuItem_Click);
             // 
@@ -130,7 +130,7 @@
             // 
             this.contactListToolStripMenuItem.Image = global::PersonelOrganizer.Properties.Resources.report;
             this.contactListToolStripMenuItem.Name = "contactListToolStripMenuItem";
-            this.contactListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contactListToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.contactListToolStripMenuItem.Text = "Contact List";
             this.contactListToolStripMenuItem.Click += new System.EventHandler(this.contactListToolStripMenuItem_Click);
             // 
@@ -150,7 +150,7 @@
             this.addAppointmentToolStripMenuItem,
             this.appointmentListToolStripMenuItem});
             this.addTimeToolStripMenuItem.Name = "addTimeToolStripMenuItem";
-            this.addTimeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addTimeToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addTimeToolStripMenuItem.Text = "Appointment";
             // 
             // addAppointmentToolStripMenuItem
@@ -175,14 +175,14 @@
             this.addEventToolStripMenuItem1,
             this.eventListToolStripMenuItem});
             this.addEventToolStripMenuItem.Name = "addEventToolStripMenuItem";
-            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addEventToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.addEventToolStripMenuItem.Text = "Event";
             // 
             // addEventToolStripMenuItem1
             // 
             this.addEventToolStripMenuItem1.Image = global::PersonelOrganizer.Properties.Resources.add;
             this.addEventToolStripMenuItem1.Name = "addEventToolStripMenuItem1";
-            this.addEventToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.addEventToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.addEventToolStripMenuItem1.Text = "Add Event";
             this.addEventToolStripMenuItem1.Click += new System.EventHandler(this.addEventToolStripMenuItem1_Click);
             // 
@@ -190,7 +190,7 @@
             // 
             this.eventListToolStripMenuItem.Image = global::PersonelOrganizer.Properties.Resources.report;
             this.eventListToolStripMenuItem.Name = "eventListToolStripMenuItem";
-            this.eventListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.eventListToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.eventListToolStripMenuItem.Text = "Event List";
             this.eventListToolStripMenuItem.Click += new System.EventHandler(this.eventListToolStripMenuItem_Click);
             // 
@@ -212,7 +212,7 @@
             this.addCreditCardToolStripMenuItem1,
             this.cardListToolStripMenuItem1});
             this.addCreditCardToolStripMenuItem.Name = "addCreditCardToolStripMenuItem";
-            this.addCreditCardToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addCreditCardToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.addCreditCardToolStripMenuItem.Text = "Credit Card";
             // 
             // addCreditCardToolStripMenuItem1
@@ -237,14 +237,14 @@
             this.addIncomeToolStripMenuItem1,
             this.incomeListToolStripMenuItem1});
             this.addIncomeToolStripMenuItem.Name = "addIncomeToolStripMenuItem";
-            this.addIncomeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addIncomeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.addIncomeToolStripMenuItem.Text = "Income";
             // 
             // addIncomeToolStripMenuItem1
             // 
             this.addIncomeToolStripMenuItem1.Image = global::PersonelOrganizer.Properties.Resources.add;
             this.addIncomeToolStripMenuItem1.Name = "addIncomeToolStripMenuItem1";
-            this.addIncomeToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.addIncomeToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.addIncomeToolStripMenuItem1.Text = "Add Income";
             this.addIncomeToolStripMenuItem1.Click += new System.EventHandler(this.addIncomeToolStripMenuItem1_Click);
             // 
@@ -252,7 +252,7 @@
             // 
             this.incomeListToolStripMenuItem1.Image = global::PersonelOrganizer.Properties.Resources.report;
             this.incomeListToolStripMenuItem1.Name = "incomeListToolStripMenuItem1";
-            this.incomeListToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.incomeListToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.incomeListToolStripMenuItem1.Text = "Income List";
             this.incomeListToolStripMenuItem1.Click += new System.EventHandler(this.incomeListToolStripMenuItem1_Click);
             // 
@@ -262,14 +262,14 @@
             this.addExpenseToolStripMenuItem1,
             this.expenseListToolStripMenuItem1});
             this.addExpenseToolStripMenuItem.Name = "addExpenseToolStripMenuItem";
-            this.addExpenseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addExpenseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.addExpenseToolStripMenuItem.Text = "Expense";
             // 
             // addExpenseToolStripMenuItem1
             // 
             this.addExpenseToolStripMenuItem1.Image = global::PersonelOrganizer.Properties.Resources.add;
             this.addExpenseToolStripMenuItem1.Name = "addExpenseToolStripMenuItem1";
-            this.addExpenseToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.addExpenseToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
             this.addExpenseToolStripMenuItem1.Text = "Add Expense";
             this.addExpenseToolStripMenuItem1.Click += new System.EventHandler(this.addExpenseToolStripMenuItem1_Click);
             // 
@@ -277,7 +277,7 @@
             // 
             this.expenseListToolStripMenuItem1.Image = global::PersonelOrganizer.Properties.Resources.report;
             this.expenseListToolStripMenuItem1.Name = "expenseListToolStripMenuItem1";
-            this.expenseListToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.expenseListToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
             this.expenseListToolStripMenuItem1.Text = "Expense List";
             this.expenseListToolStripMenuItem1.Click += new System.EventHandler(this.expenseListToolStripMenuItem1_Click);
             // 
@@ -316,7 +316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(438, 667);
+            this.ClientSize = new System.Drawing.Size(438, 687);
             this.Controls.Add(this.status);
             this.Controls.Add(this.menu);
             this.IsMdiContainer = true;

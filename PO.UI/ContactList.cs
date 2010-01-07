@@ -34,14 +34,16 @@ namespace PersonelOrganizer
                 DataGridViewImageCell select = new DataGridViewImageCell();
                 row.Cells.Add(select);
                 DataGridViewTextBoxCell name = new DataGridViewTextBoxCell();
-                name.Value = con.CONTACT[0].Name;
+                name.Value = (!con.CONTACT[0].IsNameNull()) ? con.CONTACT[0].Name : String.Empty;
                 row.Cells.Add(name);
                 DataGridViewTextBoxCell surname = new DataGridViewTextBoxCell();
-                surname.Value = con.CONTACT[0].Surname;
+                surname.Value = (!con.CONTACT[0].IsSurnameNull()) ? con.CONTACT[0].Surname : String.Empty;
                 row.Cells.Add(surname);
                 DataGridViewTextBoxCell company = new DataGridViewTextBoxCell();
-                company.Value = con.CONTACT[0].Company;
+                company.Value = (!con.CONTACT[0].IsCompanyNull()) ? con.CONTACT[0].Company : String.Empty;
                 row.Cells.Add(company);
+                DataGridViewImageCell detail = new DataGridViewImageCell();
+                row.Cells.Add(detail);
                 gvContactList.Rows.Add(row);
             }
         }

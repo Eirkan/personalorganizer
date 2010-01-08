@@ -70,11 +70,27 @@ namespace PO.Services.BusinessObjects
         {
             IPODataObject dto = GetPODataObject();
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = @"  SELECT E.Subject FROM PersonelOrganizerDb.dbo.[EVENT] AS E
+            cmd.CommandText = @"  SELECT E.Subject FROM PersonelOrganizerDb.dbo.EVENT AS E
                                   WHERE @sDate BETWEEN E.StartDateTime AND E.EndDateTime OR
                                         @eDate BETWEEN E.StartDateTime AND E.EndDateTime";
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@sDate", SqlDbType.DateTime, pStartDate));
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@eDate", SqlDbType.DateTime, pEndDate));
+            DataTable dt = new DataTable();
+            dto.GetRecords(dt, cmd);
+            return dt;
+        }
+
+        public DataTable ChechkOverlapEvents(Guid pEventID, DateTime pStartDate, DateTime pEndDate)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"  SELECT E.Subject FROM PersonelOrganizerDb.dbo.EVENT AS E
+                                  WHERE E.EventID <> @EventID AND
+	                                    (@sDate BETWEEN E.StartDateTime AND E.EndDateTime OR
+                                         @eDate BETWEEN E.StartDateTime AND E.EndDateTime)";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@sDate", SqlDbType.DateTime, pStartDate));
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@eDate", SqlDbType.DateTime, pEndDate));
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@EventID", SqlDbType.UniqueIdentifier, pEventID));
             DataTable dt = new DataTable();
             dto.GetRecords(dt, cmd);
             return dt;

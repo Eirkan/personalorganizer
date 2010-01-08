@@ -55,7 +55,9 @@
     <Compile Include="BusinessBase.cs" />
     <Compile Include="BusinessObjects\AddressBS.cs" />
     <Compile Include="BusinessObjects\AppointmentBS.cs" />
+    <Compile Include="BusinessObjects\BankBS.cs" />
     <Compile Include="BusinessObjects\ContactBS.cs" />
+    <Compile Include="BusinessObjects\CreditCardBS.cs" />
     <Compile Include="BusinessObjects\EmailBS.cs" />
     <Compile Include="BusinessObjects\EventBS.cs" />
     <Compile Include="BusinessObjects\FrequencyBS.cs" />

@@ -261,6 +261,8 @@ namespace PO.Types.DataSets {
             
             private global::System.Data.DataColumn columnStartDateTime;
             
+            private global::System.Data.DataColumn columnEndDateTime;
+            
             private global::System.Data.DataColumn columnDuration;
             
             private global::System.Data.DataColumn columnNote;
@@ -350,6 +352,13 @@ namespace PO.Types.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EndDateTimeColumn {
+                get {
+                    return this.columnEndDateTime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn DurationColumn {
                 get {
                     return this.columnDuration;
@@ -406,7 +415,7 @@ namespace PO.Types.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public EVENTRow AddEVENTRow(System.Guid EventID, System.Guid UserID, string Subject, string Location, System.DateTime StartDateTime, int Duration, string Note, int Frequency, int NumberOfOccurence) {
+            public EVENTRow AddEVENTRow(System.Guid EventID, System.Guid UserID, string Subject, string Location, System.DateTime StartDateTime, System.DateTime EndDateTime, int Duration, string Note, int Frequency, int NumberOfOccurence) {
                 EVENTRow rowEVENTRow = ((EVENTRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         EventID,
@@ -414,6 +423,7 @@ namespace PO.Types.DataSets {
                         Subject,
                         Location,
                         StartDateTime,
+                        EndDateTime,
                         Duration,
                         Note,
                         Frequency,
@@ -448,6 +458,7 @@ namespace PO.Types.DataSets {
                 this.columnSubject = base.Columns["Subject"];
                 this.columnLocation = base.Columns["Location"];
                 this.columnStartDateTime = base.Columns["StartDateTime"];
+                this.columnEndDateTime = base.Columns["EndDateTime"];
                 this.columnDuration = base.Columns["Duration"];
                 this.columnNote = base.Columns["Note"];
                 this.columnFrequency = base.Columns["Frequency"];
@@ -466,6 +477,8 @@ namespace PO.Types.DataSets {
                 base.Columns.Add(this.columnLocation);
                 this.columnStartDateTime = new global::System.Data.DataColumn("StartDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStartDateTime);
+                this.columnEndDateTime = new global::System.Data.DataColumn("EndDateTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEndDateTime);
                 this.columnDuration = new global::System.Data.DataColumn("Duration", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDuration);
                 this.columnNote = new global::System.Data.DataColumn("Note", typeof(string), null, global::System.Data.MappingType.Element);
@@ -679,6 +692,21 @@ namespace PO.Types.DataSets {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime EndDateTime {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableEVENT.EndDateTimeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EndDateTime\' in table \'EVENT\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEVENT.EndDateTimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public int Duration {
                 get {
                     try {
@@ -766,6 +794,16 @@ namespace PO.Types.DataSets {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetStartDateTimeNull() {
                 this[this.tableEVENT.StartDateTimeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEndDateTimeNull() {
+                return this.IsNull(this.tableEVENT.EndDateTimeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEndDateTimeNull() {
+                this[this.tableEVENT.EndDateTimeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

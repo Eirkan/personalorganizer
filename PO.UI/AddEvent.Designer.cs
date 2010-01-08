@@ -44,6 +44,7 @@
             this.txtDuration = new System.Windows.Forms.TextBox();
             this.txtOccurence = new System.Windows.Forms.TextBox();
             this.dateStartDate = new System.Windows.Forms.DateTimePicker();
+            this.ddlDuration = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblEventHeader
@@ -172,10 +173,10 @@
             // 
             // txtDuration
             // 
-            this.txtDuration.Location = new System.Drawing.Point(87, 140);
+            this.txtDuration.Location = new System.Drawing.Point(261, 140);
             this.txtDuration.MaxLength = 100;
             this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new System.Drawing.Size(249, 23);
+            this.txtDuration.Size = new System.Drawing.Size(75, 23);
             this.txtDuration.TabIndex = 35;
             // 
             // txtOccurence
@@ -193,6 +194,20 @@
             this.dateStartDate.Size = new System.Drawing.Size(139, 23);
             this.dateStartDate.TabIndex = 37;
             // 
+            // ddlDuration
+            // 
+            this.ddlDuration.FormattingEnabled = true;
+            this.ddlDuration.Items.AddRange(new object[] {
+            "Minute",
+            "Hour",
+            "Day",
+            "Month",
+            "Year"});
+            this.ddlDuration.Location = new System.Drawing.Point(87, 140);
+            this.ddlDuration.Name = "ddlDuration";
+            this.ddlDuration.Size = new System.Drawing.Size(163, 23);
+            this.ddlDuration.TabIndex = 38;
+            // 
             // AddEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -200,6 +215,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(439, 624);
             this.ControlBox = false;
+            this.Controls.Add(this.ddlDuration);
             this.Controls.Add(this.dateStartDate);
             this.Controls.Add(this.txtOccurence);
             this.Controls.Add(this.txtDuration);
@@ -246,5 +262,6 @@
         private System.Windows.Forms.TextBox txtDuration;
         private System.Windows.Forms.TextBox txtOccurence;
         private System.Windows.Forms.DateTimePicker dateStartDate;
+        private System.Windows.Forms.ComboBox ddlDuration;
     }
 }

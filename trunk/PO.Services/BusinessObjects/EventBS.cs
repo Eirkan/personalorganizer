@@ -33,6 +33,29 @@ namespace PO.Services.BusinessObjects
             return ds;
         }
 
+        public EVENTDataSet SelectByEventID(Guid pEventID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.EVENT WHERE EventID = @EventID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@EventID", SqlDbType.UniqueIdentifier, pEventID));
+            EVENTDataSet ds = new EVENTDataSet();
+            dto.GetRecords(ds.EVENT, cmd);
+            return ds;
+        }
+
+        public EVENTDataSet SelectByUserIDFrequencyType(Guid pUserID, int pFreqType)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.EVENT WHERE UserID = @UserID AND Frequency = @Frequency";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@UserID", SqlDbType.UniqueIdentifier, pUserID));
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@Frequency", SqlDbType.Int, pFreqType));
+            EVENTDataSet ds = new EVENTDataSet();
+            dto.GetRecords(ds.EVENT, cmd);
+            return ds;
+        }
+
         public void DeleteEventByEventID(Guid pEventID)
         {
             IPODataObject dto = GetPODataObject();
@@ -41,6 +64,20 @@ namespace PO.Services.BusinessObjects
                                 WHERE EventID = @EventID";
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@EventID", SqlDbType.UniqueIdentifier, pEventID));
             dto.ExecuteSqlStatement(cmd);
+        }
+
+        public DataTable ChechkOverlapEvents(DateTime pStartDate, DateTime pEndDate)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"  SELECT E.Subject FROM PersonelOrganizerDb.dbo.[EVENT] AS E
+                                  WHERE @sDate BETWEEN E.StartDateTime AND E.EndDateTime OR
+                                        @eDate BETWEEN E.StartDateTime AND E.EndDateTime";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@sDate", SqlDbType.DateTime, pStartDate));
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@eDate", SqlDbType.DateTime, pEndDate));
+            DataTable dt = new DataTable();
+            dto.GetRecords(dt, cmd);
+            return dt;
         }
     }
 }

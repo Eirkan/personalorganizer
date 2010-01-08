@@ -100,12 +100,23 @@ namespace PersonelOrganizer
 
         private void appointmentListToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenAppointmentList();
+        }
+
+        public void OpenAppointmentList()
+        {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new AppointmentList());
             statusLabel.Text = "Appointment List";
         }
 
         private void addEventToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            POGlobals.EventID = Guid.Empty;
+            OpenAddEvent();
+        }
+
+        public void OpenAddEvent()
         {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new AddEvent());
@@ -114,12 +125,22 @@ namespace PersonelOrganizer
 
         private void eventListToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenEventList();
+        }
+
+        public void OpenEventList()
+        {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new EventList());
             statusLabel.Text = "Event List";
         }
 
         private void addCreditCardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenAddCreditCard();
+        }
+
+        public void OpenAddCreditCard()
         {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new AddCreditCard());
@@ -128,12 +149,22 @@ namespace PersonelOrganizer
 
         private void cardListToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            OpenCreditCardList();
+        }
+
+        public void OpenCreditCardList()
+        {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new CreditCardList());
             statusLabel.Text = "Credit Card List";
         }
 
         private void addIncomeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenAddIncome();
+        }
+
+        public void OpenAddIncome()
         {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new AddIncome());
@@ -142,12 +173,22 @@ namespace PersonelOrganizer
 
         private void incomeListToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            OpenIncomeList();
+        }
+
+        public void OpenIncomeList()
+        {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new IncomeList());
             statusLabel.Text = "Income List";
         }
 
         private void addExpenseToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            OpenAddExpense();
+        }
+
+        public void OpenAddExpense()
         {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new AddExpense());
@@ -156,12 +197,22 @@ namespace PersonelOrganizer
 
         private void expenseListToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            OpenExpenseList();
+        }
+
+        public void OpenExpenseList()
+        {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new ExpenseList());
             statusLabel.Text = "Expense List";
         }
 
         private void budgetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenBudgetList();
+        }
+
+        public void OpenBudgetList()
         {
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new Budget());

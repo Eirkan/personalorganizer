@@ -226,5 +226,10 @@ namespace PersonelOrganizer
             SetChildrenFormValues(new POHelp());
             statusLabel.Text = "About Personel Organizer";
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -31,7 +31,6 @@
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menu = new System.Windows.Forms.MenuStrip();
-            this.aboutPersonelOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addContactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +56,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutPersonalOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutPersonelOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -93,12 +93,6 @@
             this.menu.Size = new System.Drawing.Size(438, 24);
             this.menu.TabIndex = 3;
             this.menu.Text = "menu";
-            // 
-            // aboutPersonelOrganizerToolStripMenuItem
-            // 
-            this.aboutPersonelOrganizerToolStripMenuItem.Name = "aboutPersonelOrganizerToolStripMenuItem";
-            this.aboutPersonelOrganizerToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.aboutPersonelOrganizerToolStripMenuItem.Text = "About Personel Organizer";
             // 
             // mainToolStripMenuItem
             // 
@@ -312,6 +306,12 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // aboutPersonelOrganizerToolStripMenuItem
+            // 
+            this.aboutPersonelOrganizerToolStripMenuItem.Name = "aboutPersonelOrganizerToolStripMenuItem";
+            this.aboutPersonelOrganizerToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.aboutPersonelOrganizerToolStripMenuItem.Text = "About Personel Organizer";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +325,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personel Organizer v1.0";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
             this.menu.ResumeLayout(false);

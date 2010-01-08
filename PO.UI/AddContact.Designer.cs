@@ -94,7 +94,7 @@
             this.txtSurname.MaxLength = 100;
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(249, 23);
-            this.txtSurname.TabIndex = 3;
+            this.txtSurname.TabIndex = 2;
             // 
             // lblSurname
             // 
@@ -112,7 +112,7 @@
             this.txtCompany.MaxLength = 100;
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(249, 23);
-            this.txtCompany.TabIndex = 5;
+            this.txtCompany.TabIndex = 3;
             // 
             // lblCompany
             // 
@@ -139,7 +139,7 @@
             this.btnAddMail.Location = new System.Drawing.Point(358, 121);
             this.btnAddMail.Name = "btnAddMail";
             this.btnAddMail.Size = new System.Drawing.Size(55, 23);
-            this.btnAddMail.TabIndex = 7;
+            this.btnAddMail.TabIndex = 5;
             this.btnAddMail.Text = "Add";
             this.btnAddMail.UseVisualStyleBackColor = true;
             this.btnAddMail.Click += new System.EventHandler(this.btnAddMail_Click);
@@ -150,7 +150,7 @@
             this.txtMail.MaxLength = 100;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(249, 23);
-            this.txtMail.TabIndex = 8;
+            this.txtMail.TabIndex = 4;
             // 
             // txtWebPage
             // 
@@ -158,14 +158,14 @@
             this.txtWebPage.MaxLength = 100;
             this.txtWebPage.Name = "txtWebPage";
             this.txtWebPage.Size = new System.Drawing.Size(251, 23);
-            this.txtWebPage.TabIndex = 11;
+            this.txtWebPage.TabIndex = 6;
             // 
             // btnAddPage
             // 
             this.btnAddPage.Location = new System.Drawing.Point(360, 244);
             this.btnAddPage.Name = "btnAddPage";
             this.btnAddPage.Size = new System.Drawing.Size(55, 23);
-            this.btnAddPage.TabIndex = 10;
+            this.btnAddPage.TabIndex = 7;
             this.btnAddPage.Text = "Add";
             this.btnAddPage.UseVisualStyleBackColor = true;
             this.btnAddPage.Click += new System.EventHandler(this.btnAddPage_Click);
@@ -186,14 +186,14 @@
             this.txtPhoneNumber.MaxLength = 100;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(249, 23);
-            this.txtPhoneNumber.TabIndex = 14;
+            this.txtPhoneNumber.TabIndex = 8;
             // 
             // btnAddPhone
             // 
             this.btnAddPhone.Location = new System.Drawing.Point(358, 368);
             this.btnAddPhone.Name = "btnAddPhone";
             this.btnAddPhone.Size = new System.Drawing.Size(55, 23);
-            this.btnAddPhone.TabIndex = 13;
+            this.btnAddPhone.TabIndex = 9;
             this.btnAddPhone.Text = "Add";
             this.btnAddPhone.UseVisualStyleBackColor = true;
             this.btnAddPhone.Click += new System.EventHandler(this.btnAddPhone_Click);
@@ -214,14 +214,14 @@
             this.txtAddress.MaxLength = 100;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(251, 23);
-            this.txtAddress.TabIndex = 17;
+            this.txtAddress.TabIndex = 10;
             // 
             // btnAddAddress
             // 
             this.btnAddAddress.Location = new System.Drawing.Point(360, 494);
             this.btnAddAddress.Name = "btnAddAddress";
             this.btnAddAddress.Size = new System.Drawing.Size(55, 23);
-            this.btnAddAddress.TabIndex = 16;
+            this.btnAddAddress.TabIndex = 11;
             this.btnAddAddress.Text = "Add";
             this.btnAddAddress.UseVisualStyleBackColor = true;
             this.btnAddAddress.Click += new System.EventHandler(this.btnAddAddress_Click);

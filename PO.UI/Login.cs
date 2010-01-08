@@ -59,5 +59,11 @@ namespace PersonelOrganizer
                 main.Show();
             }
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtUserName.Text = "ibrahim";
+            txtPassword.Text = "123";
+        }
     }
 }

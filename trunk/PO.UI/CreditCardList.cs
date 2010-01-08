@@ -15,5 +15,15 @@ namespace PersonelOrganizer
         {
             InitializeComponent();
         }
+
+        private void CreditCardList_Load(object sender, EventArgs e)
+        {
+            LoadCreditCards();
+        }
+
+        private void LoadCreditCards()
+        { 
+
+        }
     }
 }

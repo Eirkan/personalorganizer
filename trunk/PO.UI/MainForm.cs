@@ -88,6 +88,7 @@ namespace PersonelOrganizer
 
         private void addAppointmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            POGlobals.AppointmentID = Guid.Empty;
             OpenAddAppointment();
         }
 

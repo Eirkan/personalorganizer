@@ -98,7 +98,6 @@ namespace PersonelOrganizer
                 case 4:
                     freqName = "Yearly";
                     break;
-
             }
             return freqName;
         }

@@ -54,7 +54,12 @@ namespace PersonelOrganizer
 
         private bool ChechkOverlapEvents()
         {
-            DataTable dt = new EventBS().ChechkOverlapEvents(dateStartDate.Value, CalculateEndDateTime());
+            DataTable dt;
+            if (POGlobals.EventID != Guid.Empty)
+                dt = new EventBS().ChechkOverlapEvents(POGlobals.EventID, dateStartDate.Value, CalculateEndDateTime());
+            else
+                dt = new EventBS().ChechkOverlapEvents(dateStartDate.Value, CalculateEndDateTime());
+
             if (dt.Rows.Count > 0)
             {
                 string evn = String.Empty;

@@ -175,13 +175,20 @@ namespace PersonelOrganizer
         {
             CheckNewRowOrUpdate();
 
-            CONTACTDataSet.CONTACTRow rowContact = contactDS.CONTACT.NewCONTACTRow();
-            rowContact.ContactID = Guid.NewGuid();
-            rowContact.UserID = POGlobals.UserID;
+            CONTACTDataSet.CONTACTRow rowContact;
+            if (POGlobals.ContactID == Guid.Empty)
+            {
+                rowContact = contactDS.CONTACT.NewCONTACTRow();
+                rowContact.ContactID = Guid.NewGuid();
+                rowContact.UserID = POGlobals.UserID;
+            }
+            else
+                rowContact = contactDS.CONTACT[0];
             rowContact.Name = txtName.Text;
             rowContact.Surname = txtSurname.Text;
             rowContact.Company = txtCompany.Text;
-            contactDS.CONTACT.AddCONTACTRow(rowContact);
+            if (POGlobals.ContactID == Guid.Empty)
+                contactDS.CONTACT.AddCONTACTRow(rowContact);
 
             if (mailDS == null)
                 mailDS = new EMAILDataSet();
@@ -292,8 +299,6 @@ namespace PersonelOrganizer
         private void CheckNewRowOrUpdate()
         {
             if (contactDS == null) contactDS = new CONTACTDataSet();
-            else
-                contactDS.CONTACT[0].Delete();
             if (mailDS == null) mailDS = new EMAILDataSet();
             else
                 mailDS.EMAIL.Clear();

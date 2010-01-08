@@ -12,5 +12,7 @@ namespace PersonelOrganizer.Util
         public static string UserNameSurname;
         public static Guid ContactID;
         public static Guid EventID;
+        public static Guid CreditCard;
+        public static Guid AppointmentID;
     }
 }

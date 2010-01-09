@@ -14,5 +14,10 @@ namespace PersonelOrganizer.Util
         public static Guid EventID;
         public static Guid CreditCard;
         public static Guid AppointmentID;
+        public static Guid CreditCardID;
+        public static Guid IncomeID;
+        public static Guid ExpenseID;
+        public static Guid BudgetID;
+        public static Guid InstallmentID;
     }
 }

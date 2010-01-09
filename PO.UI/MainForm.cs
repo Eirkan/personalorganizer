@@ -138,6 +138,7 @@ namespace PersonelOrganizer
 
         private void addCreditCardToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            POGlobals.CreditCard = Guid.Empty;
             OpenAddCreditCard();
         }
 
@@ -162,6 +163,7 @@ namespace PersonelOrganizer
 
         private void addIncomeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            POGlobals.IncomeID = Guid.Empty;
             OpenAddIncome();
         }
 
@@ -186,6 +188,7 @@ namespace PersonelOrganizer
 
         private void addExpenseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            POGlobals.ExpenseID = Guid.Empty;
             OpenAddExpense();
         }
 
@@ -210,6 +213,7 @@ namespace PersonelOrganizer
 
         private void budgetToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            POGlobals.BudgetID = Guid.Empty;
             OpenBudgetList();
         }
 

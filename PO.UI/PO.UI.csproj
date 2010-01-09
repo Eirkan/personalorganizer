@@ -144,6 +144,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\ListItem.cs" />
     <Compile Include="Util\POGlobals.cs" />
     <Compile Include="POHelp.cs">
       <SubType>Form</SubType>

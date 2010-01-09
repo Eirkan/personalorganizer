@@ -23,6 +23,8 @@ namespace PersonelOrganizer
         private void AddCreditCard_Load(object sender, EventArgs e)
         {
             LoadBanks();
+            if (POGlobals.CreditCard != Guid.Empty)
+                LoadCreditCardInfo();
         }
 
         private void LoadBanks()
@@ -54,6 +56,23 @@ namespace PersonelOrganizer
                 txtCardNumber.BackColor = Color.Red;
                 MessageBox.Show("Please enter card number!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCardNumber.BackColor = Color.White;
+                return false;
+            }
+            if (String.IsNullOrEmpty(txtLimit.Text))
+            {
+                txtLimit.BackColor = Color.Red;
+                MessageBox.Show("Please enter limit!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtLimit.BackColor = Color.White;
+                return false;
+            }
+            if (dateCID.Value > dateCDD.Value)
+            {
+                MessageBox.Show("Current Issue Date is equal or more than current due date!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (dateFID.Value > dateFDD.Value)
+            {
+                MessageBox.Show("Future Issue Date is equal or more than future due date!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -113,6 +132,24 @@ namespace PersonelOrganizer
         {
             MainForm main = (MainForm)this.MdiParent;
             main.OpenCreditCardList();
+        }
+
+        private void LoadCreditCardInfo()
+        {
+            dsCreditCard = new CreditCardBS().SelectDataSetByUserID(POGlobals.UserID);
+            CREDIT_CARDDataSet.CREDIT_CARDRow row = dsCreditCard.CREDIT_CARD[0];
+            if (!row.IsCurrentDueDateNull())
+                dateCDD.Value = row.CurrentDueDate;
+            if (!row.IsCurrentIssueDateNull())
+                dateCID.Value = row.CurrentIssueDate;
+            if (!row.IsFutureDueDateNull())
+                dateFDD.Value = row.FutureDueDate;
+            if (!row.IsFutureIssueDateNull())
+                dateFID.Value = row.FutureIssueDate;
+            if (!row.IsLimitNull())
+                txtLimit.Text = row.Limit.ToString();
+            txtCardNumber.Text = row.CardNumber;
+            ddlBank.SelectedIndex = row.BankID - 1;
         }
     }
 }

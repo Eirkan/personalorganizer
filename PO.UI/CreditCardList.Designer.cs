@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.lblAddCreditCard = new System.Windows.Forms.Label();
-            this.gvEventList = new System.Windows.Forms.DataGridView();
+            this.gvCardList = new System.Windows.Forms.DataGridView();
+            this.DataGridViewTextBoxColumnCreditCardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewTextBoxColumnSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewTextBoxColumnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewTextBoxColumnStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,7 +40,7 @@
             this.DataGridViewTextBoxColumnFrequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewContactImageColumnUpdate = new System.Windows.Forms.DataGridViewImageColumn();
             this.DataGridViewContactImageColumnDelete = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gvEventList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCardList)).BeginInit();
             this.SuspendLayout();
             // 
             // lblAddCreditCard
@@ -53,12 +54,13 @@
             this.lblAddCreditCard.TabIndex = 22;
             this.lblAddCreditCard.Text = "Credit Card List";
             // 
-            // gvEventList
+            // gvCardList
             // 
-            this.gvEventList.AllowUserToAddRows = false;
-            this.gvEventList.BackgroundColor = System.Drawing.Color.White;
-            this.gvEventList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvEventList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gvCardList.AllowUserToAddRows = false;
+            this.gvCardList.BackgroundColor = System.Drawing.Color.White;
+            this.gvCardList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvCardList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DataGridViewTextBoxColumnCreditCardID,
             this.DataGridViewTextBoxColumnSubject,
             this.DataGridViewTextBoxColumnLocation,
             this.DataGridViewTextBoxColumnStartDate,
@@ -68,21 +70,32 @@
             this.DataGridViewTextBoxColumnFrequency,
             this.DataGridViewContactImageColumnUpdate,
             this.DataGridViewContactImageColumnDelete});
-            this.gvEventList.Location = new System.Drawing.Point(15, 49);
-            this.gvEventList.Name = "gvEventList";
-            this.gvEventList.ReadOnly = true;
-            this.gvEventList.RowHeadersVisible = false;
-            this.gvEventList.Size = new System.Drawing.Size(411, 546);
-            this.gvEventList.TabIndex = 25;
+            this.gvCardList.Location = new System.Drawing.Point(15, 49);
+            this.gvCardList.Name = "gvCardList";
+            this.gvCardList.ReadOnly = true;
+            this.gvCardList.RowHeadersVisible = false;
+            this.gvCardList.Size = new System.Drawing.Size(411, 546);
+            this.gvCardList.TabIndex = 25;
+            this.gvCardList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvCardList_CellMouseClick);
+            // 
+            // DataGridViewTextBoxColumnCreditCardID
+            // 
+            this.DataGridViewTextBoxColumnCreditCardID.DataPropertyName = "CreditCardID";
+            this.DataGridViewTextBoxColumnCreditCardID.HeaderText = "CreditCardID";
+            this.DataGridViewTextBoxColumnCreditCardID.Name = "DataGridViewTextBoxColumnCreditCardID";
+            this.DataGridViewTextBoxColumnCreditCardID.ReadOnly = true;
+            this.DataGridViewTextBoxColumnCreditCardID.Visible = false;
             // 
             // DataGridViewTextBoxColumnSubject
             // 
+            this.DataGridViewTextBoxColumnSubject.DataPropertyName = "BankName";
             this.DataGridViewTextBoxColumnSubject.HeaderText = "Bank";
             this.DataGridViewTextBoxColumnSubject.Name = "DataGridViewTextBoxColumnSubject";
             this.DataGridViewTextBoxColumnSubject.ReadOnly = true;
             // 
             // DataGridViewTextBoxColumnLocation
             // 
+            this.DataGridViewTextBoxColumnLocation.DataPropertyName = "CardNumber";
             this.DataGridViewTextBoxColumnLocation.HeaderText = "Card Number";
             this.DataGridViewTextBoxColumnLocation.Name = "DataGridViewTextBoxColumnLocation";
             this.DataGridViewTextBoxColumnLocation.ReadOnly = true;
@@ -90,12 +103,14 @@
             // 
             // DataGridViewTextBoxColumnStartDate
             // 
+            this.DataGridViewTextBoxColumnStartDate.DataPropertyName = "Limit";
             this.DataGridViewTextBoxColumnStartDate.HeaderText = "Limit";
             this.DataGridViewTextBoxColumnStartDate.Name = "DataGridViewTextBoxColumnStartDate";
             this.DataGridViewTextBoxColumnStartDate.ReadOnly = true;
             // 
             // DataGridViewTextBoxColumnEndDate
             // 
+            this.DataGridViewTextBoxColumnEndDate.DataPropertyName = "CurrentIssueDate";
             this.DataGridViewTextBoxColumnEndDate.HeaderText = "Cuurent Issue Date";
             this.DataGridViewTextBoxColumnEndDate.Name = "DataGridViewTextBoxColumnEndDate";
             this.DataGridViewTextBoxColumnEndDate.ReadOnly = true;
@@ -103,6 +118,7 @@
             // 
             // DataGridViewTextBoxColumnDuration
             // 
+            this.DataGridViewTextBoxColumnDuration.DataPropertyName = "FutureIssueDate";
             this.DataGridViewTextBoxColumnDuration.HeaderText = "Future Issue Date";
             this.DataGridViewTextBoxColumnDuration.Name = "DataGridViewTextBoxColumnDuration";
             this.DataGridViewTextBoxColumnDuration.ReadOnly = true;
@@ -111,6 +127,7 @@
             // 
             // DataGridViewTextBoxColumnNote
             // 
+            this.DataGridViewTextBoxColumnNote.DataPropertyName = "CurrentDueDate";
             this.DataGridViewTextBoxColumnNote.HeaderText = "Current Due Date";
             this.DataGridViewTextBoxColumnNote.Name = "DataGridViewTextBoxColumnNote";
             this.DataGridViewTextBoxColumnNote.ReadOnly = true;
@@ -118,6 +135,7 @@
             // 
             // DataGridViewTextBoxColumnFrequency
             // 
+            this.DataGridViewTextBoxColumnFrequency.DataPropertyName = "FutureDueDate";
             this.DataGridViewTextBoxColumnFrequency.HeaderText = "Future Due Date";
             this.DataGridViewTextBoxColumnFrequency.Name = "DataGridViewTextBoxColumnFrequency";
             this.DataGridViewTextBoxColumnFrequency.ReadOnly = true;
@@ -150,7 +168,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(439, 624);
             this.ControlBox = false;
-            this.Controls.Add(this.gvEventList);
+            this.Controls.Add(this.gvCardList);
             this.Controls.Add(this.lblAddCreditCard);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.ForeColor = System.Drawing.Color.Black;
@@ -159,7 +177,7 @@
             this.ShowInTaskbar = false;
             this.Text = "CreditCardList";
             this.Load += new System.EventHandler(this.CreditCardList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gvEventList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvCardList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,7 +186,8 @@
         #endregion
 
         private System.Windows.Forms.Label lblAddCreditCard;
-        private System.Windows.Forms.DataGridView gvEventList;
+        private System.Windows.Forms.DataGridView gvCardList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumnCreditCardID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumnSubject;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumnLocation;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataGridViewTextBoxColumnStartDate;

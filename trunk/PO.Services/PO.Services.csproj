@@ -60,7 +60,12 @@
     <Compile Include="BusinessObjects\CreditCardBS.cs" />
     <Compile Include="BusinessObjects\EmailBS.cs" />
     <Compile Include="BusinessObjects\EventBS.cs" />
+    <Compile Include="BusinessObjects\ExpenseBillBS.cs" />
+    <Compile Include="BusinessObjects\ExpenseCategoryBS.cs" />
     <Compile Include="BusinessObjects\FrequencyBS.cs" />
+    <Compile Include="BusinessObjects\IncomeBS.cs" />
+    <Compile Include="BusinessObjects\IncomeCategoryBS.cs" />
+    <Compile Include="BusinessObjects\InstallmentBS.cs" />
     <Compile Include="BusinessObjects\PhoneNumberBS.cs" />
     <Compile Include="BusinessObjects\UserBS.cs" />
     <Compile Include="BusinessObjects\WebPageBS.cs" />

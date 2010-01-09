@@ -37,5 +37,28 @@ namespace PO.Services.BusinessObjects
             dto.GetRecords(dt, cmd);
             return dt;
         }
+
+        public CREDIT_CARDDataSet SelectDataSetByUserID(Guid pUserID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT *
+                                FROM PersonelOrganizerDb.dbo.CREDIT_CARD AS C 
+                                WHERE UserID = @UserID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@UserID", SqlDbType.UniqueIdentifier, pUserID));
+            CREDIT_CARDDataSet ds = new CREDIT_CARDDataSet();
+            dto.GetRecords(ds.CREDIT_CARD, cmd);
+            return ds;
+        }
+
+        public void DeleteByCreditCardID(Guid pCreditCard)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"DELETE FROM PersonelOrganizerDb.dbo.CREDIT_CARD
+                                WHERE CreditCardID = @CreditCardID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@CreditCardID", SqlDbType.UniqueIdentifier, pCreditCard));
+            dto.ExecuteSqlStatement(cmd);
+        }
     }
 }

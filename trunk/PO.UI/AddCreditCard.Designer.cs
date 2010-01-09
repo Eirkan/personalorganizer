@@ -63,7 +63,7 @@
             this.ddlBank.Location = new System.Drawing.Point(137, 48);
             this.ddlBank.Name = "ddlBank";
             this.ddlBank.Size = new System.Drawing.Size(163, 23);
-            this.ddlBank.TabIndex = 40;
+            this.ddlBank.TabIndex = 1;
             // 
             // lblBank
             // 
@@ -81,7 +81,7 @@
             this.txtCardNumber.MaxLength = 100;
             this.txtCardNumber.Name = "txtCardNumber";
             this.txtCardNumber.Size = new System.Drawing.Size(249, 23);
-            this.txtCardNumber.TabIndex = 42;
+            this.txtCardNumber.TabIndex = 2;
             // 
             // lblCardNumber
             // 
@@ -99,7 +99,7 @@
             this.txtLimit.MaxLength = 100;
             this.txtLimit.Name = "txtLimit";
             this.txtLimit.Size = new System.Drawing.Size(249, 23);
-            this.txtLimit.TabIndex = 44;
+            this.txtLimit.TabIndex = 3;
             // 
             // label1
             // 
@@ -113,10 +113,11 @@
             // 
             // dateCID
             // 
+            this.dateCID.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateCID.Location = new System.Drawing.Point(137, 135);
             this.dateCID.Name = "dateCID";
             this.dateCID.Size = new System.Drawing.Size(139, 23);
-            this.dateCID.TabIndex = 46;
+            this.dateCID.TabIndex = 4;
             // 
             // lblStartDate
             // 
@@ -130,16 +131,17 @@
             // 
             // dateFID
             // 
-            this.dateFID.Location = new System.Drawing.Point(137, 164);
+            this.dateFID.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateFID.Location = new System.Drawing.Point(137, 191);
             this.dateFID.Name = "dateFID";
             this.dateFID.Size = new System.Drawing.Size(139, 23);
-            this.dateFID.TabIndex = 48;
+            this.dateFID.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(16, 170);
+            this.label2.Location = new System.Drawing.Point(16, 197);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 15);
             this.label2.TabIndex = 47;
@@ -147,16 +149,17 @@
             // 
             // dateCDD
             // 
-            this.dateCDD.Location = new System.Drawing.Point(137, 193);
+            this.dateCDD.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateCDD.Location = new System.Drawing.Point(137, 164);
             this.dateCDD.Name = "dateCDD";
             this.dateCDD.Size = new System.Drawing.Size(139, 23);
-            this.dateCDD.TabIndex = 50;
+            this.dateCDD.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(16, 199);
+            this.label3.Location = new System.Drawing.Point(16, 170);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 15);
             this.label3.TabIndex = 49;
@@ -164,10 +167,11 @@
             // 
             // dateFDD
             // 
+            this.dateFDD.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateFDD.Location = new System.Drawing.Point(137, 222);
             this.dateFDD.Name = "dateFDD";
             this.dateFDD.Size = new System.Drawing.Size(139, 23);
-            this.dateFDD.TabIndex = 52;
+            this.dateFDD.TabIndex = 7;
             // 
             // label4
             // 
@@ -175,16 +179,16 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.Location = new System.Drawing.Point(16, 228);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 15);
+            this.label4.Size = new System.Drawing.Size(106, 15);
             this.label4.TabIndex = 51;
-            this.label4.Text = "Current Issue Date :";
+            this.label4.Text = "Future Due Date :";
             // 
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(310, 285);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 53;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

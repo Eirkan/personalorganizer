@@ -26,7 +26,7 @@ namespace PersonelOrganizer
             ddlPaymentType.SelectedIndex = 0;
             ddlInstallment.SelectedIndex = 0;
             LoadExpenseCategory();
-        }        
+        }
 
         private void ddlPaymentType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -182,7 +182,7 @@ namespace PersonelOrganizer
                 dsExpense.EXPENSE_BILL.AddEXPENSE_BILLRow(rowExpense);
 
                 new InstallmentBS().Save(dsInstallment);
-                new ExpenseBillBS().Save(dsExpense);                
+                new ExpenseBillBS().Save(dsExpense);
 
                 MessageBox.Show("Expense is saved succesfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NavigateEventList();
@@ -219,7 +219,7 @@ namespace PersonelOrganizer
                 }
 
                 new InstallmentBS().Save(dsInstallment);
-                new ExpenseBillBS().Save(dsExpense);     
+                new ExpenseBillBS().Save(dsExpense);
                 MessageBox.Show("Expense is updated succesfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 NavigateEventList();
             }
@@ -239,6 +239,33 @@ namespace PersonelOrganizer
         {
             dsExpense = new ExpenseBillBS().SelectDataSetByExpenseID(POGlobals.ExpenseID);
             dsInstallment = new InstallmentBS().SelectByInstallmentID(POGlobals.InstallmentID);
+
+            EXPENSE_BILLDataSet.EXPENSE_BILLRow rowExpense = dsExpense.EXPENSE_BILL[0];
+            INSTALLMENTDataSet.INSTALLMENTRow rowIns = dsInstallment.INSTALLMENT[0];
+            if (!rowExpense.IsAmountNull())
+                txtAmount.Text = rowExpense.Amount.ToString();
+            if (!rowExpense.IsCreditCardIDNull())
+            {
+                for (int i = 0; i < ddlCreditCard.Items.Count; i++)
+                {
+                    if (rowExpense.CreditCardID == ((ListItem)ddlCreditCard.Items[i]).Value)
+                    {
+                        ddlCreditCard.SelectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            if (!rowExpense.IsDueDateNull())
+                dateDueDate.Value = rowExpense.DueDate;
+            if (!rowExpense.IsExpenseCategoryNull())
+                ddlExpenseCategory.SelectedIndex = rowExpense.ExpenseCategory - 1;
+            if (!rowExpense.IsInstallmentIDNull())
+            {
+                if (!rowIns.IsNumberOfInstallmentNull())
+                    txtInstallmentNo.Text = rowIns.NumberOfInstallment.ToString();
+                if (!rowIns.IsTotalAmountNull())
+                    txtTotalAmount.Text = rowIns.TotalAmount.ToString();                
+            }
         }
     }
 }

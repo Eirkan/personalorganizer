@@ -189,6 +189,7 @@ namespace PersonelOrganizer
         private void addExpenseToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             POGlobals.ExpenseID = Guid.Empty;
+            POGlobals.InstallmentID = Guid.Empty;
             OpenAddExpense();
         }
 

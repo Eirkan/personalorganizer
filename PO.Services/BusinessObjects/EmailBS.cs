@@ -5,7 +5,7 @@ using System.Text;
 using PO.DataService;
 using System.Data;
 using System.Data.SqlClient;
-using IB.EBakanlik.Services.Tools;
+using PO.Services.Tools;
 using System.ServiceModel;
 using PO.Types.Attributes;
 using PO.Types.DataSets;

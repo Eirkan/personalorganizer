@@ -7,7 +7,7 @@ using PO.Types.Attributes;
 using PO.DataService;
 using PO.Types.DataSets;
 using System.Data.SqlClient;
-using IB.EBakanlik.Services.Tools;
+using PO.Services.Tools;
 using System.Data;
 
 namespace PO.Services.BusinessObjects

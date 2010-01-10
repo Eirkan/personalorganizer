@@ -210,20 +210,7 @@ namespace PersonelOrganizer
             CloseWindowOpenedBefore();
             SetChildrenFormValues(new ExpenseList());
             statusLabel.Text = "Expense List";
-        }
-
-        private void budgetToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            POGlobals.BudgetID = Guid.Empty;
-            OpenBudgetList();
-        }
-
-        public void OpenBudgetList()
-        {
-            CloseWindowOpenedBefore();
-            SetChildrenFormValues(new Budget());
-            statusLabel.Text = "Budget";
-        }
+        }      
 
         private void aboutPersonalOrganizerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -235,6 +222,18 @@ namespace PersonelOrganizer
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void transactionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenTransactiontList();
+        }
+
+        public void OpenTransactiontList()
+        {
+            CloseWindowOpenedBefore();
+            SetChildrenFormValues(new TransactionList());
+            statusLabel.Text = "Transaction List";
         }
     }
 }

@@ -235,5 +235,17 @@ namespace PersonelOrganizer
             SetChildrenFormValues(new TransactionList());
             statusLabel.Text = "Transaction List";
         }
+
+        private void monthlyBudgetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenMonthlyBudgetList();
+        }
+
+        public void OpenMonthlyBudgetList()
+        {
+            CloseWindowOpenedBefore();
+            SetChildrenFormValues(new TransactionList());
+            statusLabel.Text = "Monthly Budget";
+        }
     }
 }

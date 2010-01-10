@@ -53,11 +53,12 @@
             this.addExpenseToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.expenseListToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.budgetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutPersonalOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutPersonelOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthlyBudgetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -279,10 +280,19 @@
             // budgetToolStripMenuItem
             // 
             this.budgetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.transactionsToolStripMenuItem});
+            this.transactionsToolStripMenuItem,
+            this.monthlyBudgetToolStripMenuItem});
             this.budgetToolStripMenuItem.Name = "budgetToolStripMenuItem";
             this.budgetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.budgetToolStripMenuItem.Text = "Budget";
+            // 
+            // transactionsToolStripMenuItem
+            // 
+            this.transactionsToolStripMenuItem.Image = global::PersonelOrganizer.Properties.Resources.report;
+            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.transactionsToolStripMenuItem.Text = "Transactions";
+            this.transactionsToolStripMenuItem.Click += new System.EventHandler(this.transactionsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -314,13 +324,13 @@
             this.aboutPersonelOrganizerToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.aboutPersonelOrganizerToolStripMenuItem.Text = "About Personel Organizer";
             // 
-            // transactionsToolStripMenuItem
+            // monthlyBudgetToolStripMenuItem
             // 
-            this.transactionsToolStripMenuItem.Image = global::PersonelOrganizer.Properties.Resources.report;
-            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
-            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.transactionsToolStripMenuItem.Text = "Transactions";
-            this.transactionsToolStripMenuItem.Click += new System.EventHandler(this.transactionsToolStripMenuItem_Click);
+            this.monthlyBudgetToolStripMenuItem.Image = global::PersonelOrganizer.Properties.Resources.report;
+            this.monthlyBudgetToolStripMenuItem.Name = "monthlyBudgetToolStripMenuItem";
+            this.monthlyBudgetToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.monthlyBudgetToolStripMenuItem.Text = "Monthly Budget";
+            this.monthlyBudgetToolStripMenuItem.Click += new System.EventHandler(this.monthlyBudgetToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -377,6 +387,7 @@
         private System.Windows.Forms.ToolStripMenuItem addEventToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem eventListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transactionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem monthlyBudgetToolStripMenuItem;
     }
 }
 

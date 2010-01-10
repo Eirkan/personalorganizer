@@ -37,7 +37,7 @@ namespace PersonelOrganizer
                 return;
 
             Guid installmentID = Guid.Empty;
-            if (gvExpenseList.Rows[e.RowIndex].Cells[0].Value != null)
+            if (!String.IsNullOrEmpty(gvExpenseList.Rows[e.RowIndex].Cells[0].Value.ToString()))
                 installmentID = new Guid(gvExpenseList.Rows[e.RowIndex].Cells[0].Value.ToString());
             Guid expenseID = new Guid(gvExpenseList.Rows[e.RowIndex].Cells[1].Value.ToString());
 
@@ -54,8 +54,13 @@ namespace PersonelOrganizer
                 DialogResult res = MessageBox.Show("Are you sure to delete expense? If expense has installments, All installments will be deleted!!! ", "Input", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    new ExpenseBillBS().DeleteByInstallmentID(installmentID);
-                    new InstallmentBS().DeleteByInstallmentID(installmentID);
+                    if (installmentID != Guid.Empty)
+                    {
+                        new ExpenseBillBS().DeleteByInstallmentID(installmentID);
+                        new InstallmentBS().DeleteByInstallmentID(installmentID);
+                    }
+                    else
+                        new ExpenseBillBS().DeleteByExpenseBillID(expenseID);
                     LoadRecords();
                 }
             }

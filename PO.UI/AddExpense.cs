@@ -26,6 +26,9 @@ namespace PersonelOrganizer
             ddlPaymentType.SelectedIndex = 0;
             ddlInstallment.SelectedIndex = 0;
             LoadExpenseCategory();
+            LoadCreditCards();
+            if (POGlobals.ExpenseID != Guid.Empty)
+                LoadIncomeInfo();
         }
 
         private void ddlPaymentType_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,7 +39,6 @@ namespace PersonelOrganizer
                 ddlCreditCard.Visible = true;
                 lblInstallment.Visible = true;
                 ddlInstallment.Visible = true;
-                LoadCreditCards();
             }
             else
             {
@@ -44,6 +46,29 @@ namespace PersonelOrganizer
                 ddlCreditCard.Visible = false;
                 lblInstallment.Visible = false;
                 ddlInstallment.Visible = false;
+                lblInstallmentNo.Visible = false;
+                txtInstallmentNo.Visible = false;
+                lblTotalAmount.Visible = false;
+                txtTotalAmount.Visible = false;
+                ddlInstallment.SelectedIndex = 0;
+            }
+        }
+
+        private void CheckCashCreditCard()
+        {
+            if (ddlInstallment.SelectedIndex == 1)
+            {
+                lblInstallmentNo.Visible = true;
+                txtInstallmentNo.Visible = true;
+                lblTotalAmount.Visible = true;
+                txtTotalAmount.Visible = true;
+            }
+            else
+            {
+                lblInstallmentNo.Visible = false;
+                txtInstallmentNo.Visible = false;
+                lblTotalAmount.Visible = false;
+                txtTotalAmount.Visible = false;
             }
         }
 
@@ -88,22 +113,7 @@ namespace PersonelOrganizer
 
         private void ddlInstallment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlInstallment.SelectedIndex == 1)
-            {
-                lblInstallmentNo.Visible = true;
-                txtInstallmentNo.Visible = true;
-                lblTotalAmount.Visible = true;
-                txtTotalAmount.Visible = true;
-            }
-            else
-            {
-                lblInstallmentNo.Visible = false;
-                txtInstallmentNo.Visible = false;
-                lblTotalAmount.Visible = false;
-                txtTotalAmount.Visible = false;
-            }
-            txtTotalAmount.Text = String.Empty;
-            txtInstallmentNo.Text = String.Empty;
+            CheckCashCreditCard();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -111,14 +121,13 @@ namespace PersonelOrganizer
             if (!CheckInputCorrect())
                 return;
 
-            if (POGlobals.ExpenseID == Guid.Empty)
-                SaveExpense();
-            else
-                UpdateExpense();
+            SaveExpense();
         }
 
         private bool CheckInputCorrect()
         {
+            decimal totalAmount = 0;
+
             if (String.IsNullOrEmpty(txtSubject.Text))
             {
                 txtSubject.BackColor = Color.Red;
@@ -150,6 +159,15 @@ namespace PersonelOrganizer
                     return false;
                 }
             }
+            if (ddlInstallment.SelectedIndex == 1)
+            {
+                totalAmount = Convert.ToInt32(txtInstallmentNo.Text) * Convert.ToDecimal(txtAmount.Text);
+                if (Convert.ToDecimal(txtTotalAmount.Text) > totalAmount)
+                {
+                    MessageBox.Show("Please correct installment no, amount or total amount. Because Total Amout is more than sum of all installments!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -157,29 +175,56 @@ namespace PersonelOrganizer
         {
             try
             {
+                decimal amount = Convert.ToDecimal(txtAmount.Text);
+                decimal leftTotal = amount;
+
+                if (ddlInstallment.SelectedIndex == 1)
+                    leftTotal = Convert.ToDecimal(txtTotalAmount.Text);
+
                 dsInstallment = new INSTALLMENTDataSet();
                 INSTALLMENTDataSet.INSTALLMENTRow row = dsInstallment.INSTALLMENT.NewINSTALLMENTRow();
                 row.InstallmentID = Guid.NewGuid();
-                row.NumberOfInstallment = Convert.ToInt32(txtInstallmentNo.Text);
-                row.TotalAmount = Convert.ToDecimal(txtAmount.Text);
-                dsInstallment.INSTALLMENT.AddINSTALLMENTRow(row);
+                row.NumberOfInstallment = 1;
+
+                if (ddlPaymentType.SelectedIndex == 1)
+                {
+                    if (ddlInstallment.SelectedIndex == 1)
+                    {
+                        row.NumberOfInstallment = Convert.ToInt32(txtInstallmentNo.Text);
+                        row.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+                    }
+                    else
+                        row.TotalAmount = Convert.ToDecimal(txtAmount.Text);
+                    dsInstallment.INSTALLMENT.AddINSTALLMENTRow(row);
+                }
 
                 dsExpense = new EXPENSE_BILLDataSet();
-                EXPENSE_BILLDataSet.EXPENSE_BILLRow rowExpense = dsExpense.EXPENSE_BILL.NewEXPENSE_BILLRow();
-                rowExpense.ExpenseBillID = Guid.NewGuid();
-                rowExpense.Subject = txtSubject.Text;
-                rowExpense.Amount = Convert.ToDecimal(txtAmount.Text);
-                rowExpense.ExpenseCategory = ddlExpenseCategory.SelectedIndex + 1;
-                rowExpense.DueDate = dateDueDate.Value;
-                if (ddlCreditCard.Items.Count > 0)
+                for (int i = 0; i < row.NumberOfInstallment; i++)
                 {
-                    rowExpense.CreditCardID = ((ListItem)ddlCreditCard.SelectedItem).Value;
+                    EXPENSE_BILLDataSet.EXPENSE_BILLRow rowExpense = dsExpense.EXPENSE_BILL.NewEXPENSE_BILLRow();
+                    rowExpense.ExpenseBillID = Guid.NewGuid();
+                    rowExpense.UserID = POGlobals.UserID;
+                    rowExpense.Subject = txtSubject.Text;
+                    if (leftTotal >= amount)
+                        rowExpense.Amount = amount;
+                    else
+                        rowExpense.Amount = leftTotal;
+                    rowExpense.ExpenseCategory = ddlExpenseCategory.SelectedIndex + 1;
+                    rowExpense.DueDate = dateDueDate.Value.AddMonths(i);
+                    if (ddlPaymentType.SelectedIndex == 1)
+                    {
+                        rowExpense.InstallmentID = row.InstallmentID;
+                        if (ddlCreditCard.Items.Count > 0)
+                        {
+                            rowExpense.CreditCardID = ((ListItem)ddlCreditCard.SelectedItem).Value;
+                        }
+                    }
+                    dsExpense.EXPENSE_BILL.AddEXPENSE_BILLRow(rowExpense);
+                    leftTotal = leftTotal - amount;
                 }
-                if (ddlInstallment.SelectedIndex == 1)
-                {
-                    row.InstallmentID = row.InstallmentID;
-                }
-                dsExpense.EXPENSE_BILL.AddEXPENSE_BILLRow(rowExpense);
+
+                if (POGlobals.InstallmentID != Guid.Empty)
+                    new ExpenseBillBS().DeleteByInstallmentID(POGlobals.InstallmentID);
 
                 new InstallmentBS().Save(dsInstallment);
                 new ExpenseBillBS().Save(dsExpense);
@@ -190,42 +235,6 @@ namespace PersonelOrganizer
             catch (Exception exc)
             {
                 MessageBox.Show("Expense not saved, Error: " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void UpdateExpense()
-        {
-            try
-            {
-                INSTALLMENTDataSet.INSTALLMENTRow row = dsInstallment.INSTALLMENT[0];
-                row.InstallmentID = Guid.NewGuid();
-                row.NumberOfInstallment = Convert.ToInt32(txtInstallmentNo.Text);
-                row.TotalAmount = Convert.ToDecimal(txtAmount.Text);
-
-                dsExpense = new EXPENSE_BILLDataSet();
-                EXPENSE_BILLDataSet.EXPENSE_BILLRow rowExpense = dsExpense.EXPENSE_BILL[0];
-                rowExpense.ExpenseBillID = Guid.NewGuid();
-                rowExpense.Subject = txtSubject.Text;
-                rowExpense.Amount = Convert.ToDecimal(txtAmount.Text);
-                rowExpense.ExpenseCategory = ddlExpenseCategory.SelectedIndex + 1;
-                rowExpense.DueDate = dateDueDate.Value;
-                if (ddlCreditCard.Items.Count > 0)
-                {
-                    rowExpense.CreditCardID = ((ListItem)ddlCreditCard.SelectedItem).Value;
-                }
-                if (ddlInstallment.SelectedIndex == 1)
-                {
-                    row.InstallmentID = row.InstallmentID;
-                }
-
-                new InstallmentBS().Save(dsInstallment);
-                new ExpenseBillBS().Save(dsExpense);
-                MessageBox.Show("Expense is updated succesfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                NavigateEventList();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Expense not updated, Error: " + exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -244,6 +253,7 @@ namespace PersonelOrganizer
             INSTALLMENTDataSet.INSTALLMENTRow rowIns = dsInstallment.INSTALLMENT[0];
             if (!rowExpense.IsAmountNull())
                 txtAmount.Text = rowExpense.Amount.ToString();
+            txtSubject.Text = rowExpense.Subject;
             if (!rowExpense.IsCreditCardIDNull())
             {
                 for (int i = 0; i < ddlCreditCard.Items.Count; i++)
@@ -264,7 +274,9 @@ namespace PersonelOrganizer
                 if (!rowIns.IsNumberOfInstallmentNull())
                     txtInstallmentNo.Text = rowIns.NumberOfInstallment.ToString();
                 if (!rowIns.IsTotalAmountNull())
-                    txtTotalAmount.Text = rowIns.TotalAmount.ToString();                
+                    txtTotalAmount.Text = rowIns.TotalAmount.ToString();
+                ddlInstallment.SelectedIndex = 1;
+                ddlPaymentType.SelectedIndex = 1;
             }
         }
     }

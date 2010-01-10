@@ -32,8 +32,8 @@ namespace PO.Services.BusinessObjects
                                     , I.NumberOfInstallment
 	                                , I.TotalAmount
                                 FROM PersonelOrganizerDb.dbo.EXPENSE_BILL AS E
-                                  INNER JOIN PersonelOrganizerDB.dbo.TT_EXPENSE_CATEGORY AS EC ON E.ExpenseCategory = EC.ExpenseCategoryID
-                                  INNER JOIN PersonelOrganizerDB.dbo.INSTALLMENT AS I ON I.InstallmentID = E.InstallmentID 
+                                  LEFT OUTER JOIN PersonelOrganizerDB.dbo.TT_EXPENSE_CATEGORY AS EC ON E.ExpenseCategory = EC.ExpenseCategoryID
+                                  LEFT OUTER JOIN PersonelOrganizerDB.dbo.INSTALLMENT AS I ON I.InstallmentID = E.InstallmentID 
                                 WHERE E.UserID = @UserID";
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@UserID", SqlDbType.UniqueIdentifier, pUserID));
             DataTable dt = new DataTable();
@@ -46,8 +46,8 @@ namespace PO.Services.BusinessObjects
             IPODataObject dto = GetPODataObject();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = @"SELECT * FROM PersonelOrganizerDb.dbo.EXPENSE_BILL
-                                WHERE ExpenseID = @ExpenseID";
-            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ExpenseID", SqlDbType.UniqueIdentifier, pExpenseID));
+                                WHERE ExpenseBillID = @ExpenseBillID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ExpenseBillID", SqlDbType.UniqueIdentifier, pExpenseID));
             EXPENSE_BILLDataSet ds = new EXPENSE_BILLDataSet();
             dto.GetRecords(ds.EXPENSE_BILL, cmd);
             return ds;
@@ -60,6 +60,24 @@ namespace PO.Services.BusinessObjects
             cmd.CommandText = @"DELETE FROM PersonelOrganizerDb.dbo.EXPENSE_BILL
                                 WHERE ExpenseBillID = @ExpenseBillID";
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@ExpenseBillID", SqlDbType.UniqueIdentifier, pExpenseBillID));
+            dto.ExecuteSqlStatement(cmd);
+        }
+
+        public void DeleteByInstallmentID(Guid pInstallmentID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"
+                                BEGIN TRAN;
+                                
+                                DELETE FROM PersonelOrganizerDb.dbo.EXPENSE_BILL
+                                WHERE InstallmentID = @InstallmentID
+
+                                DELETE FROM PersonelOrganizerDb.dbo.INSTALLMENT
+                                WHERE InstallmentID = @InstallmentID
+    
+                                COMMIT TRAN;";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@InstallmentID", SqlDbType.UniqueIdentifier, pInstallmentID));
             dto.ExecuteSqlStatement(cmd);
         }
     }

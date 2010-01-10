@@ -51,6 +51,19 @@ namespace PO.Services.BusinessObjects
             return ds;
         }
 
+        public CREDIT_CARDDataSet SelectByCreditCardID(Guid pCreditCardID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT *
+                                FROM PersonelOrganizerDb.dbo.CREDIT_CARD AS C 
+                                WHERE CreditCardID = @CreditCardID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@CreditCardID", SqlDbType.UniqueIdentifier, pCreditCardID));
+            CREDIT_CARDDataSet ds = new CREDIT_CARDDataSet();
+            dto.GetRecords(ds.CREDIT_CARD, cmd);
+            return ds;
+        }
+
         public void DeleteByCreditCardID(Guid pCreditCard)
         {
             IPODataObject dto = GetPODataObject();

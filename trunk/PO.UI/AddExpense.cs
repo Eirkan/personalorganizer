@@ -168,7 +168,37 @@ namespace PersonelOrganizer
                     return false;
                 }
             }
+            if (ddlPaymentType.SelectedIndex == 1)
+            {
+                CREDIT_CARDDataSet ds = new CreditCardBS().SelectByCreditCardID(((ListItem)ddlCreditCard.SelectedItem).Value);
+                int usedLimit = new ExpenseBillBS().SelectCreditCardID(((ListItem)ddlCreditCard.SelectedItem).Value);
+                if (ds.CREDIT_CARD.Rows.Count > 0)
+                {
+                    decimal leftLimit = ds.CREDIT_CARD[0].Limit - usedLimit;
+                    if (ddlPaymentType.SelectedIndex == 0 ||
+                        (ddlPaymentType.SelectedIndex == 1 && ddlInstallment.SelectedIndex == 0))
+                    {
+                        if (Convert.ToDecimal(txtAmount.Text) > leftLimit)
+                        {
+                            return LimitExceedMessage();
+                        }
+                    }
+                    else if (ddlInstallment.SelectedIndex == 1)
+                    {
+                        if (Convert.ToDecimal(txtTotalAmount.Text) > leftLimit)
+                        {
+                            return LimitExceedMessage();
+                        }
+                    }
+                }
+            }
             return true;
+        }
+
+        private static bool LimitExceedMessage()
+        {
+            MessageBox.Show("Total debt exceeds the limit for credit card", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return false;
         }
 
         private void SaveExpense()

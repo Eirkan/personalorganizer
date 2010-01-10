@@ -34,7 +34,8 @@ namespace PO.Services.BusinessObjects
                                 FROM PersonelOrganizerDb.dbo.EXPENSE_BILL AS E
                                   LEFT OUTER JOIN PersonelOrganizerDB.dbo.TT_EXPENSE_CATEGORY AS EC ON E.ExpenseCategory = EC.ExpenseCategoryID
                                   LEFT OUTER JOIN PersonelOrganizerDB.dbo.INSTALLMENT AS I ON I.InstallmentID = E.InstallmentID 
-                                WHERE E.UserID = @UserID";
+                                WHERE E.UserID = @UserID
+                                ORDER BY E.Subject, E.DueDate";
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@UserID", SqlDbType.UniqueIdentifier, pUserID));
             DataTable dt = new DataTable();
             dto.GetRecords(dt, cmd);
@@ -79,6 +80,22 @@ namespace PO.Services.BusinessObjects
                                 COMMIT TRAN;";
             cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@InstallmentID", SqlDbType.UniqueIdentifier, pInstallmentID));
             dto.ExecuteSqlStatement(cmd);
+        }
+
+        public int SelectCreditCardID(Guid pCreditCardID)
+        {
+            IPODataObject dto = GetPODataObject();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = @"SELECT SUM(Amount) AS Limit
+                                FROM PersonelOrganizerDb.dbo.EXPENSE_BILL 
+                                WHERE CreditCardID = @CreditCardID";
+            cmd.Parameters.Add(ParameterBuilder.CreateSqlParameter("@CreditCardID", SqlDbType.UniqueIdentifier, pCreditCardID));
+            DataTable dt = new DataTable();
+            dto.GetRecords(dt, cmd);
+            if (dt.Rows[0]["Limit"] != DBNull.Value)
+                return Convert.ToInt32(dt.Rows[0]["Limit"]);
+
+            return 0;
         }
     }
 }

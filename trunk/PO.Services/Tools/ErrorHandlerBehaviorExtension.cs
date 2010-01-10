@@ -12,7 +12,7 @@ using System.ServiceModel.Configuration;
 using System.Collections;
 using PO.Services;
 
-namespace IB.EBakanlik.Services.Tools
+namespace PO.Services.Tools
 {
     internal class ErrorHandlerBehavior :  BusinessBase, IServiceBehavior, IErrorHandler
     {

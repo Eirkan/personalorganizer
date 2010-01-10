@@ -7,7 +7,7 @@
       <FileName>BusinessBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IB.EBakanlik.Services.Tools.ErrorHandlerBehavior">
+  <Class Name="PO.Services.Tools.ErrorHandlerBehavior">
     <Position X="3" Y="4.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAYAACAAAgAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -15,14 +15,14 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="IB.EBakanlik.Services.Tools.ErrorHandlerBehaviorExtension">
+  <Class Name="PO.Services.Tools.ErrorHandlerBehaviorExtension">
     <Position X="4.75" Y="1.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Tools\ErrorHandlerBehaviorExtension.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="IB.EBakanlik.Services.Tools.ParameterBuilder">
+  <Class Name="PO.Services.Tools.ParameterBuilder">
     <Position X="4.75" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

@@ -57,6 +57,7 @@
             this.aboutPersonalOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutPersonelOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -206,7 +207,7 @@
             this.addCreditCardToolStripMenuItem1,
             this.cardListToolStripMenuItem1});
             this.addCreditCardToolStripMenuItem.Name = "addCreditCardToolStripMenuItem";
-            this.addCreditCardToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.addCreditCardToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addCreditCardToolStripMenuItem.Text = "Credit Card";
             // 
             // addCreditCardToolStripMenuItem1
@@ -231,7 +232,7 @@
             this.addIncomeToolStripMenuItem1,
             this.incomeListToolStripMenuItem1});
             this.addIncomeToolStripMenuItem.Name = "addIncomeToolStripMenuItem";
-            this.addIncomeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.addIncomeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addIncomeToolStripMenuItem.Text = "Income";
             // 
             // addIncomeToolStripMenuItem1
@@ -256,7 +257,7 @@
             this.addExpenseToolStripMenuItem1,
             this.expenseListToolStripMenuItem1});
             this.addExpenseToolStripMenuItem.Name = "addExpenseToolStripMenuItem";
-            this.addExpenseToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.addExpenseToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addExpenseToolStripMenuItem.Text = "Expense";
             // 
             // addExpenseToolStripMenuItem1
@@ -277,10 +278,11 @@
             // 
             // budgetToolStripMenuItem
             // 
+            this.budgetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.transactionsToolStripMenuItem});
             this.budgetToolStripMenuItem.Name = "budgetToolStripMenuItem";
-            this.budgetToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.budgetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.budgetToolStripMenuItem.Text = "Budget";
-            this.budgetToolStripMenuItem.Click += new System.EventHandler(this.budgetToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -311,6 +313,14 @@
             this.aboutPersonelOrganizerToolStripMenuItem.Name = "aboutPersonelOrganizerToolStripMenuItem";
             this.aboutPersonelOrganizerToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.aboutPersonelOrganizerToolStripMenuItem.Text = "About Personel Organizer";
+            // 
+            // transactionsToolStripMenuItem
+            // 
+            this.transactionsToolStripMenuItem.Image = global::PersonelOrganizer.Properties.Resources.report;
+            this.transactionsToolStripMenuItem.Name = "transactionsToolStripMenuItem";
+            this.transactionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.transactionsToolStripMenuItem.Text = "Transactions";
+            this.transactionsToolStripMenuItem.Click += new System.EventHandler(this.transactionsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -366,6 +376,7 @@
         private System.Windows.Forms.ToolStripMenuItem budgetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addEventToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem eventListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transactionsToolStripMenuItem;
     }
 }
 

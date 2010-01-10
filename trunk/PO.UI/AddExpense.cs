@@ -176,29 +176,22 @@ namespace PersonelOrganizer
                 {
                     decimal leftLimit = ds.CREDIT_CARD[0].Limit - usedLimit;
                     if (ddlPaymentType.SelectedIndex == 0 ||
-                        (ddlPaymentType.SelectedIndex == 1 && ddlInstallment.SelectedIndex == 0))
-                    {
-                        if (Convert.ToDecimal(txtAmount.Text) > leftLimit)
-                        {
-                            return LimitExceedMessage();
-                        }
-                    }
-                    else if (ddlInstallment.SelectedIndex == 1)
-                    {
-                        if (Convert.ToDecimal(txtTotalAmount.Text) > leftLimit)
-                        {
-                            return LimitExceedMessage();
-                        }
-                    }
+                        (ddlPaymentType.SelectedIndex == 1 && ddlInstallment.SelectedIndex == 0) || ddlInstallment.SelectedIndex == 1)
+                        return LimitExceedMessage(leftLimit);
                 }
             }
             return true;
         }
 
-        private static bool LimitExceedMessage()
+        private bool LimitExceedMessage(decimal leftLimit)
         {
-            MessageBox.Show("Total debt exceeds the limit for credit card", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return false;
+            if (Convert.ToDecimal(txtAmount.Text) > leftLimit)
+            {
+                MessageBox.Show("Total debt exceeds the limit for credit card", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else
+                return true;
         }
 
         private void SaveExpense()

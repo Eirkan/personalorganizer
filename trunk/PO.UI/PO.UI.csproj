@@ -227,10 +227,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PO.DataService\PO.DataService.csproj">
-      <Project>{2FC65154-37DF-4FFC-B29D-10E925D56D4D}</Project>
-      <Name>PO.DataService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PO.Services\PO.Services.csproj">
       <Project>{2664F888-8CB5-404A-BF08-BC13806EAAB1}</Project>
       <Name>PO.Services</Name>

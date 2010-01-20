@@ -56,11 +56,29 @@ namespace PersonelOrganizer
                 {
                     if (installmentID != Guid.Empty)
                     {
-                        new ExpenseBillBS().DeleteByInstallmentID(installmentID);
-                        new InstallmentBS().DeleteByInstallmentID(installmentID);
+                        try
+                        {
+                            new ExpenseBillBS().DeleteByInstallmentID(installmentID);
+                            new InstallmentBS().DeleteByInstallmentID(installmentID);
+                        }
+                        catch (Exception exc)
+                        {
+                            if (exc.Message.Contains("FK"))
+                                MessageBox.Show("Expense is used in somewhere, can't be deleted!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else
-                        new ExpenseBillBS().DeleteByExpenseBillID(expenseID);
+                    {
+                        try
+                        {
+                            new ExpenseBillBS().DeleteByExpenseBillID(expenseID);
+                        }
+                        catch (Exception exc)
+                        {
+                            if (exc.Message.Contains("FK"))
+                                MessageBox.Show("Expense is used in somewhere, can't be deleted!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
                     LoadRecords();
                 }
             }

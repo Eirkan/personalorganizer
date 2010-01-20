@@ -30,7 +30,6 @@
         {
             this.lblAddCreditCard = new System.Windows.Forms.Label();
             this.gvIncomeList = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.DataGridViewTextBoxColumnCreditCardID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewTextBoxColumnSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewTextBoxColumnLocation = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +37,7 @@
             this.DataGridViewTextBoxColumnEndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewContactImageColumnUpdate = new System.Windows.Forms.DataGridViewImageColumn();
             this.DataGridViewContactImageColumnDelete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvIncomeList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,17 +72,6 @@
             this.gvIncomeList.Size = new System.Drawing.Size(411, 546);
             this.gvIncomeList.TabIndex = 27;
             this.gvIncomeList.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvIncomeList_CellMouseClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label1.Location = new System.Drawing.Point(12, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 15);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Credit Card List";
             // 
             // DataGridViewTextBoxColumnCreditCardID
             // 
@@ -141,6 +130,17 @@
             this.DataGridViewContactImageColumnDelete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.DataGridViewContactImageColumnDelete.Width = 50;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 15);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Income Card List";
+            // 
             // IncomeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -156,7 +156,7 @@
             this.Name = "IncomeList";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "IncomeList";
+            this.Text = "Income List";
             this.Load += new System.EventHandler(this.IncomeList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvIncomeList)).EndInit();
             this.ResumeLayout(false);

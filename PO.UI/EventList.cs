@@ -119,8 +119,16 @@ namespace PersonelOrganizer
                 DialogResult res = MessageBox.Show("Are you sure to delete event?", "Input", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    new EventBS().DeleteEventByEventID(eventID);
-                    LoadEventList();
+                    try
+                    {
+                        new EventBS().DeleteEventByEventID(eventID);
+                        LoadEventList();
+                    }
+                    catch (Exception exc)
+                    {
+                        if (exc.Message.Contains("FK"))
+                            MessageBox.Show("Event is used in somewhere, can't be deleted!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }

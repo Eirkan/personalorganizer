@@ -49,8 +49,16 @@ namespace PersonelOrganizer
                 DialogResult res = MessageBox.Show("Are you sure to delete income?", "Input", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    new IncomeBS().DeleteByIncomeID(incomeID);
-                    LoadRecords();
+                    try
+                    {
+                        new IncomeBS().DeleteByIncomeID(incomeID);
+                        LoadRecords();
+                    }
+                    catch (Exception exc)
+                    {
+                        if (exc.Message.Contains("FK"))
+                            MessageBox.Show("Income is used in somewhere, can't be deleted!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }

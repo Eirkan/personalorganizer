@@ -49,8 +49,16 @@ namespace PersonelOrganizer
                 DialogResult res = MessageBox.Show("Are you sure to delete credit card?", "Input", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    new CreditCardBS().DeleteByCreditCardID(creditCardID);
-                    LoadCreditCards();
+                    try
+                    {
+                        new CreditCardBS().DeleteByCreditCardID(creditCardID);
+                        LoadCreditCards();
+                    }
+                    catch (Exception exc)
+                    {
+                        if (exc.Message.Contains("FK"))
+                            MessageBox.Show("Credit Card is used in somewhere, can't be deleted!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }

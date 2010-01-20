@@ -72,8 +72,16 @@ namespace PersonelOrganizer
                 DialogResult res = MessageBox.Show("Are you sure to delete contact?", "Input", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
                 {
-                    new ContactBS().DeleteContactByContactID(contactID);
-                    LoadContacts();
+                    try
+                    {
+                        new ContactBS().DeleteContactByContactID(contactID);
+                        LoadContacts();
+                    }
+                    catch (Exception exc)
+                    {
+                        if (exc.Message.Contains("FK"))
+                            MessageBox.Show("Contact is used in somewhere, can't be deleted!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
             }
         }
